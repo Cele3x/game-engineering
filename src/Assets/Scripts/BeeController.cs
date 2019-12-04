@@ -65,7 +65,7 @@ public class BeeController : MonoBehaviour
     {
         if (_isSuccessful) return;
         _isSuccessful = true;
-        _gameController.beeScore += 1;
+        _gameController.BeeScores();
         _navMeshAgent.enabled = false;
     }
 

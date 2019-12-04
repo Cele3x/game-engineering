@@ -19,4 +19,11 @@ public class GameController : MonoBehaviour
     {
         
     }
+
+    public void BeeScores()
+    {
+        beeScore += 1;
+        GameObject bee = Instantiate(beePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        bee.GetComponent<BeeController>().target = player.transform;
+    }
 }
