@@ -11,6 +11,7 @@ public class BeeController : MonoBehaviour
     private GameController _gameController;
     private NavMeshAgent _navMeshAgent;
     private Animator _beeAnimator;
+    private AudioSource _audioSource;
     private float _distanceToTarget = Mathf.Infinity;
     private Boolean _isSuccessful;
 
@@ -24,6 +25,7 @@ public class BeeController : MonoBehaviour
         _gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         _beeAnimator = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _audioSource = GetComponent<AudioSource>();
         _beeAnimator.SetBool(Idle, true);
     }
     
@@ -49,6 +51,10 @@ public class BeeController : MonoBehaviour
 
     private void ChaseTarget()
     {
+        if (!_audioSource.isPlaying)
+        {
+            _audioSource.Play();
+        }
         _beeAnimator.SetBool(Idle, false);
         _beeAnimator.SetBool(Move, true);
         _navMeshAgent.SetDestination(target.position);
@@ -71,6 +77,7 @@ public class BeeController : MonoBehaviour
 
     private void GetAway()
     {
+        _audioSource.Stop();
         transform.position += Vector3.up * Time.deltaTime;
         Destroy(gameObject, 8.0f);
     }
