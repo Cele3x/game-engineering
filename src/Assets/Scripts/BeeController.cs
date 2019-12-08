@@ -21,7 +21,6 @@ public class BeeController : MonoBehaviour
 
     void Start()
     {
-        //target = GameObject.FindWithTag("Player").GetComponent<Transform>();
         _gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         _beeAnimator = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -33,17 +32,18 @@ public class BeeController : MonoBehaviour
         if (_isSuccessful)
         {
             GetAway();
-            return;
         }
-        _distanceToTarget = Vector3.Distance(target.position, transform.position);
-        if (_distanceToTarget >= _navMeshAgent.stoppingDistance)
+        else
         {
-            ChaseTarget();
-        }
-
-        if (_distanceToTarget <= _navMeshAgent.stoppingDistance)
-        {
-            AttackTarget();
+            _distanceToTarget = Vector3.Distance(target.position, transform.position);
+            if (_distanceToTarget >= _navMeshAgent.stoppingDistance)
+            {
+                ChaseTarget();
+            } 
+            else if (_distanceToTarget <= _navMeshAgent.stoppingDistance)
+            {
+                AttackTarget();
+            }
         }
     }
 
@@ -54,14 +54,14 @@ public class BeeController : MonoBehaviour
         _navMeshAgent.SetDestination(target.position);
     }
 
-    private void AttackTarget()
+    private void  AttackTarget()
     {
         _beeAnimator.SetBool(Move, false);
         _beeAnimator.SetTrigger(Attack);
         _beeAnimator.SetBool(Idle, true);
     }
 
-    private void OnTriggerExit(Collider other)
+    public void CollisionFromChild(Collider other)
     {
         if (_isSuccessful) return;
         _isSuccessful = true;

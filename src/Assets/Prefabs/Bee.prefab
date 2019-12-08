@@ -91,7 +91,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 3553768502263998242}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.35
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -455,7 +455,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3549771023120884712}
-  - component: {fileID: 3553970680166072031}
+  - component: {fileID: 6577669181305750045}
+  - component: {fileID: 4468956952859623037}
   m_Layer: 0
   m_Name: Bone019
   m_TagString: Untagged
@@ -477,7 +478,7 @@ Transform:
   m_Father: {fileID: 3549649557182490442}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 8.533077e-13, y: -1.0104002e-13, z: -6.752939}
---- !u!136 &3553970680166072031
+--- !u!136 &6577669181305750045
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -487,10 +488,23 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.062396824
-  m_Height: 0.124793634
-  m_Direction: 1
-  m_Center: {x: -0.035445858, y: -0.0022621069, z: -0.0000000024055722}
+  m_Radius: 0.05225999
+  m_Height: 0.12816486
+  m_Direction: 0
+  m_Center: {x: -0.023023624, y: 0.00000017693719, z: -0.0000000029470137}
+--- !u!114 &4468956952859623037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3555038851052309778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6042e7ceccb354f468fbc57a23945428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBee: {fileID: 3553768502263998242}
 --- !u!1 &3555051428492038412
 GameObject:
   m_ObjectHideFlags: 0
