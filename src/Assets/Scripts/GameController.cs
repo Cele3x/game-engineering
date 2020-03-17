@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject player;
+   
+    public GameObject playerBody;
     public GameObject beePrefab;
+    private PlayerController playerController;
     public int playerScore = 0;
     public int beeScore = 0;
     
@@ -16,21 +18,38 @@ public class GameController : MonoBehaviour
     
     void Start()
     {
+        playerController = playerBody.GetComponentInParent<PlayerController>();
         GameObject bee = Instantiate(beePrefab, _spawnPoints[_currentSpawnIndex++], Quaternion.identity);
-        bee.GetComponent<BeeController>().target = player.transform;
+        bee.GetComponent<BeeController>().target = playerBody.transform;
     }
 
     public void BeeScores()
     {
         beeScore += 1;
+        playerController.TakeDamage(1f);
+
+        Debug.Log("Autsch");
+
+        if (playerController.Health <= 0)
+        {
+           GameOver();
+        }
+       
         GameObject bee = Instantiate(beePrefab, _spawnPoints[_currentSpawnIndex++ % _spawnPoints.Length], Quaternion.identity);
-        bee.GetComponent<BeeController>().target = player.transform;
+        bee.GetComponent<BeeController>().target = playerBody.transform;
     }
 
     public void PlayerScores()
     {
         playerScore += 1;
         GameObject bee = Instantiate(beePrefab, _spawnPoints[_currentSpawnIndex++ % _spawnPoints.Length], Quaternion.identity);
-        bee.GetComponent<BeeController>().target = player.transform;
+        bee.GetComponent<BeeController>().target = playerBody.transform;
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("Game Over!");
+        //TODO show Game Over Screen GameOverUI.SetActive(true);
+
     }
 }

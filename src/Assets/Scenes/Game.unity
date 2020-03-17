@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 4986059}
   - component: {fileID: 4986058}
   - component: {fileID: 4986062}
+  - component: {fileID: 4986063}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -236,6 +237,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1555380113}
+--- !u!114 &4986063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4986057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353cebb86e1643e4a91f5e0bbbf41dbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hudLives: {fileID: 46780238}
 --- !u!4 &6290543 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 458416, guid: 58176fbf71be51f45ab216fdd7d45a7a,
@@ -7948,11 +7962,26 @@ CapsuleCollider:
   m_GameObject: {fileID: 1735347250}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2.2035434
   m_Direction: 1
   m_Center: {x: 0, y: 0.00000049039664, z: 0}
+--- !u!114 &1735347257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735347250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f29e4eb8eae9c14baae5c1f8a53e2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  maxHealth: 3
+  maxTotalHealth: 5
 --- !u!4 &1736991690 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 458416, guid: 58176fbf71be51f45ab216fdd7d45a7a,
@@ -8381,7 +8410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edcd65b2864144a41a777c10e71e5fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1735347250}
+  playerBody: {fileID: 1735347250}
   beePrefab: {fileID: 3553768502263998242, guid: 8bb73a0fd587902409c17a0a9b3370a2,
     type: 3}
   playerScore: 0

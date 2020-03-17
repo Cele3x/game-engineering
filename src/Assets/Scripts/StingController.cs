@@ -18,4 +18,5 @@ public class StingController : MonoBehaviour
     {
         _beeController.CollisionFromChild(other);
     }
+
 }
