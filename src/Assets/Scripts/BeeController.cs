@@ -67,6 +67,11 @@ public class BeeController : MonoBehaviour
         _beeAnimator.SetBool(Idle, true);
     }
 
+
+    private void OnParticleCollision(GameObject other)
+    {
+        Debug.Log("Bee hit with spray");
+    }
     public void CollisionFromChild(Collider other)
     {
         if (_isSuccessful) return;
