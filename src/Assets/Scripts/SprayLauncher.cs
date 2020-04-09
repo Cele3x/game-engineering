@@ -8,13 +8,14 @@ public class SprayLauncher : MonoBehaviour
     public ParticleSystem particleLauncher;
     public GameObject nozle;
     public GameObject hole;
+    private AudioSource audioSource;
     private Vector3 nozlePosSteady = new Vector3(0, 0, 0);
     private Vector3 nozlePosPressed = new Vector3(0, (float)-0.1, 0);
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -27,6 +28,7 @@ public class SprayLauncher : MonoBehaviour
 
             nozle.transform.localPosition = nozlePosPressed;
             hole.transform.localPosition = nozlePosPressed;
+            if (!audioSource.isPlaying) { audioSource.Play(); }
 
         }
 
@@ -34,6 +36,7 @@ public class SprayLauncher : MonoBehaviour
         {
             nozle.transform.localPosition = nozlePosSteady;
             hole.transform.localPosition = nozlePosSteady;
+            audioSource.Stop();
         }
     }
 }
