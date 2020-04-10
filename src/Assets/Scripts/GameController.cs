@@ -7,7 +7,9 @@ public class GameController : MonoBehaviour
    
     public GameObject playerBody;
     public GameObject beePrefab;
+    private GameObject parent;
     private PlayerController playerController;
+    private int beeCounter = 0;
     public int playerScore = 0;
     public int beeScore = 0;
     
@@ -19,8 +21,15 @@ public class GameController : MonoBehaviour
     void Start()
     {
         playerController = playerBody.GetComponentInParent<PlayerController>();
-        GameObject bee = Instantiate(beePrefab, _spawnPoints[_currentSpawnIndex++], Quaternion.identity);
+        parent = GameObject.FindWithTag("DynamicGameObjects");
+        InstantiateBee();
+    }
+
+    private void InstantiateBee()
+    {
+        GameObject bee = Instantiate(beePrefab, _spawnPoints[_currentSpawnIndex++  % _spawnPoints.Length], Quaternion.identity, parent.transform);
         bee.GetComponent<BeeController>().target = playerBody.transform;
+        bee.name = "Bee_" + beeCounter++;
     }
 
     public void BeeScores()
@@ -35,15 +44,13 @@ public class GameController : MonoBehaviour
            GameOver();
         }
        
-        GameObject bee = Instantiate(beePrefab, _spawnPoints[_currentSpawnIndex++ % _spawnPoints.Length], Quaternion.identity);
-        bee.GetComponent<BeeController>().target = playerBody.transform;
+        InstantiateBee();
     }
 
     public void PlayerScores()
     {
         playerScore += 1;
-        GameObject bee = Instantiate(beePrefab, _spawnPoints[_currentSpawnIndex++ % _spawnPoints.Length], Quaternion.identity);
-        bee.GetComponent<BeeController>().target = playerBody.transform;
+        InstantiateBee();
     }
 
     public void GameOver()
