@@ -14,6 +14,17 @@ public class BeeController : MonoBehaviour
     private AudioSource _audioSource;
     private float _distanceToTarget = Mathf.Infinity;
     private Boolean _isSuccessful;
+    private Boolean isNumb;
+
+    private float numbTimeLeft;
+    private float levelTime;
+    private float numbDuration = 10.0f;
+    private float initialWingSpeed;
+    private float initialNavSpeed;
+    private float initialAudioPitch;
+    private float numbWingSpeed = 0.2f;
+    private float numbNavSpeed = 0.35f;
+    private float numbAudioPitch = 0.35f;
 
     private static readonly int Attack = Animator.StringToHash("attack");
     private static readonly int Move = Animator.StringToHash("move");
@@ -27,10 +38,17 @@ public class BeeController : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _audioSource = GetComponent<AudioSource>();
         _beeAnimator.SetBool(Idle, true);
+        initialWingSpeed = _beeAnimator.speed;
+        initialNavSpeed = _navMeshAgent.speed;
+        initialAudioPitch = _audioSource.pitch;
     }
     
     void Update()
     {
+        if (isNumb)
+        {
+            UpdateNumbTimer();
+        }
         if (_isSuccessful)
         {
             GetAway();
@@ -47,6 +65,18 @@ public class BeeController : MonoBehaviour
                 AttackTarget();
             }
         }
+    }
+
+    private void UpdateNumbTimer() {
+
+        numbTimeLeft = levelTime - Time.timeSinceLevelLoad;
+   
+        if (Math.Round(numbTimeLeft, 2) == 0 || Math.Round(numbTimeLeft, 2) < 0)
+        {
+            SetNumbState(false);
+        }
+        Debug.Log("Time Left: "+ Math.Round(numbTimeLeft, 2));
+
     }
 
     private void ChaseTarget()
@@ -70,7 +100,31 @@ public class BeeController : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        Debug.Log("Bee hit with spray");
+        if (!isNumb) {
+            SetNumbState(true);
+        }
+       
+    }
+
+    private void SetNumbState(bool becomeNumb)
+    {
+        if (becomeNumb)
+        {
+            levelTime = Time.timeSinceLevelLoad + numbDuration;
+            isNumb = true;
+            _beeAnimator.speed = numbWingSpeed;
+            _navMeshAgent.speed = numbNavSpeed;
+            _audioSource.pitch = numbAudioPitch;
+        }
+        else
+        {
+            _beeAnimator.speed = initialWingSpeed;
+            _navMeshAgent.speed =initialNavSpeed;
+            _audioSource.pitch = initialAudioPitch;
+            isNumb = false;
+
+        }
+
     }
     public void CollisionFromChild(Collider other)
     {
