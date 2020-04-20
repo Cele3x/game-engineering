@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    public Slider slider;
 
     void Start()
     {
-        Debug.Log("testis");
         Cursor.visible = true;
+        slider.value = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
     }
 
     public void PlayGame() 
@@ -19,7 +21,6 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Quit");
         Application.Quit();
     }
 
