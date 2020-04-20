@@ -133,6 +133,10 @@ public class BeeController : MonoBehaviour
         _gameController.BeeScores();
         _navMeshAgent.enabled = false;
     }
+    public void OnSwatterHit(GameObject swatter) {
+        transform.LookAt(swatter.transform.position);
+        transform.position = Vector3.Lerp(transform.position, transform.forward * -200, Time.deltaTime*0.7f);
+    }
 
     private void GetAway()
     {

@@ -25,7 +25,8 @@ public class PlayerController : MonoBehaviour
 
     public delegate void OnHealthChangedDelegate();
     public OnHealthChangedDelegate onHealthChangedCallback;
-    //private static readonly int Spray1 = Animator.StringToHash("spray");
+    private static readonly int Spray1 = Animator.StringToHash("spray");
+    private static readonly string HitStateName = "Hit";
     private static readonly int Hit1 = Animator.StringToHash("hit");
 
     // Start is called before the first frame update
@@ -53,7 +54,25 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    public void OnSwatterGridTrigger(Collider other) {
+        
+        if (other.CompareTag("Enemy"))
+        {
+            //Checks if attack animation is playing
+            AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
 
+            if (info.IsName("Hit"))
+            {
+                Debug.Log("I punched a bee");
+                BeeController beeCtrl = other.GetComponent<BeeController>();
+                beeCtrl.OnSwatterHit(swatter);
+
+
+            }
+        }
+
+
+    }
     public void TakeDamage(float damage)
     {
         health -= damage;
