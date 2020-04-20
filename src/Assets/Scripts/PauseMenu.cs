@@ -36,7 +36,9 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        //GameObject.FindWithTag("Player").GetComponent<FirstPersonController>().enabled = true;
+        GameObject.FindWithTag("Player").GetComponent<FirstPersonController>().enabled = true;
+        GameObject.FindWithTag("Player").GetComponent<PlayerController>().enabled = true;
+
     }
 
     void Pause()
@@ -47,12 +49,12 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        //GameObject.FindWithTag("Player").GetComponent<FirstPersonController>().enabled = false;
+        GameObject.FindWithTag("Player").GetComponent<FirstPersonController>().enabled = false;
+        GameObject.FindWithTag("Player").GetComponent<PlayerController>().enabled = false;
     }
 
     public void LoadTitleScreen()
     {
-        GameObject.FindWithTag("Player").GetComponent<FirstPersonController>().enabled = false;
         Time.timeScale = 1f;
         AudioListener.pause = false;
         GameIsPaused = false;
