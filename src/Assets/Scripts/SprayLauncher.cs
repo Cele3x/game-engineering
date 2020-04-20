@@ -18,12 +18,30 @@ public class SprayLauncher : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    public void EmitSpray()
+    {
+        /*particleLauncher.Play();*/
+        particleLauncher.Emit(5);
+
+        nozle.transform.localPosition = Vector3.Lerp(nozlePosPressed, nozlePosSteady, Time.deltaTime);
+        hole.transform.localPosition = Vector3.Lerp(nozlePosPressed, nozlePosSteady, Time.deltaTime);
+        if (!audioSource.isPlaying) { audioSource.Play(); }
+    }
+
+    public void StopSpray()
+    {
+        nozle.transform.localPosition = Vector3.Lerp(nozlePosSteady, nozlePosPressed, Time.deltaTime);
+        hole.transform.localPosition = Vector3.Lerp(nozlePosSteady, nozlePosPressed, Time.deltaTime);
+        audioSource.Stop();
+
+    }
+
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if (Input.GetButton("Fire1"))
-        { /*particleLauncher.Play();*/
+        { 
             particleLauncher.Emit(5);
 
             nozle.transform.localPosition = nozlePosPressed;
@@ -38,5 +56,5 @@ public class SprayLauncher : MonoBehaviour
             hole.transform.localPosition = nozlePosSteady;
             audioSource.Stop();
         }
-    }
+    }*/
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Timeline;
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private float maxTotalHealth = 10;
 
     public GameObject swatter;
+    public GameObject spray;
+    private SprayLauncher sprayLauncher;
     private Animator animator;
 
     public float Health { get { return health; } }
@@ -22,13 +25,14 @@ public class PlayerController : MonoBehaviour
 
     public delegate void OnHealthChangedDelegate();
     public OnHealthChangedDelegate onHealthChangedCallback;
-    private static readonly int Spray1 = Animator.StringToHash("spray");
+    //private static readonly int Spray1 = Animator.StringToHash("spray");
     private static readonly int Hit1 = Animator.StringToHash("hit");
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        sprayLauncher = spray.GetComponentInChildren<SprayLauncher>();
     }
 
     // Update is called once per frame
@@ -37,11 +41,18 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Hit();
-        } else if (Input.GetKeyDown(KeyCode.Mouse1))
+        } 
+        if (Input.GetKey(KeyCode.Mouse1))
         {
             Spray();
         }
+        else if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            StopSpray();
+        }
     }
+
+
 
     public void TakeDamage(float damage)
     {
@@ -66,6 +77,12 @@ public class PlayerController : MonoBehaviour
 
     void Spray()
     {
-        animator.SetTrigger(Spray1);
+        //animator.SetTrigger(Spray1);
+        sprayLauncher.EmitSpray();
+    }
+
+    private void StopSpray()
+    {
+        sprayLauncher.StopSpray();
     }
 }
