@@ -11,15 +11,14 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
 
+    //[SerializeField] MouseLook m_MouseLook;
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) 
         {
-           if(GameIsPaused) 
-           {
-               Resume();
-           } else
+           if(!GameIsPaused) 
            {
                Pause();
            }
@@ -32,6 +31,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         AudioListener.pause = false;
         GameIsPaused = false;
+        //GameObject.FindWithTag("Player").GetComponent<FirstPersonController>().enabled = true;
     }
 
     void Pause()
@@ -40,13 +40,15 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         AudioListener.pause = true;
         GameIsPaused = true;
+        //GameObject.FindWithTag("Player").GetComponent<FirstPersonController>().enabled = false;
     }
 
     public void LoadTitleScreen()
     {
-        GameObject.Find("Player").GetComponent<FirstPersonController>().enabled = false;
+        GameObject.FindWithTag("Player").GetComponent<FirstPersonController>().enabled = false;
         Time.timeScale = 1f;
         AudioListener.pause = false;
+        GameIsPaused = false;
         SceneManager.LoadScene(0);
     }
 
