@@ -18,10 +18,13 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)) 
         {
-           if(!GameIsPaused) 
+           if(GameIsPaused) 
            {
+               Resume();
+           } else
+            {
                Pause();
-           }
+            }
         }
     }
 
@@ -31,6 +34,8 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         AudioListener.pause = false;
         GameIsPaused = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         //GameObject.FindWithTag("Player").GetComponent<FirstPersonController>().enabled = true;
     }
 
@@ -40,6 +45,8 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         AudioListener.pause = true;
         GameIsPaused = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         //GameObject.FindWithTag("Player").GetComponent<FirstPersonController>().enabled = false;
     }
 
