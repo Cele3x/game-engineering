@@ -7,7 +7,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class PauseMenu : MonoBehaviour
 {
 
-    public static bool GameIsPaused = false;  
+    public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
 
@@ -30,14 +30,15 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
+        AudioListener.pause = false;
         GameIsPaused = false;
     }
 
     void Pause()
     {
-
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
+        AudioListener.pause = true;
         GameIsPaused = true;
     }
 
@@ -45,6 +46,7 @@ public class PauseMenu : MonoBehaviour
     {
         GameObject.Find("Player").GetComponent<FirstPersonController>().enabled = false;
         Time.timeScale = 1f;
+        AudioListener.pause = false;
         SceneManager.LoadScene(0);
     }
 
