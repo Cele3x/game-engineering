@@ -261,7 +261,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4986057}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d3f8e6597b6ef64488542437a895773, type: 3}
   m_Name: 
@@ -1808,10 +1808,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 24300002, guid: 74415ea3f9cb8ed4abbf94dcb9c3839f,
         type: 2}
+    - target: {fileID: 932203828, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735347256, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1735347257, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: spray
       value: 
       objectReference: {fileID: 807331091}
+    - target: {fileID: 6411606419728505187, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
 --- !u!1001 &209322163
@@ -9020,6 +9033,8 @@ MonoBehaviour:
   gameOverUI: {fileID: 1066676079}
   playerBody: {fileID: 1735347250}
   beePrefab: {fileID: 3553768502263998242, guid: 8bb73a0fd587902409c17a0a9b3370a2,
+    type: 3}
+  powerUpPrefab: {fileID: 2207432236522074800, guid: 2a3ac0ba22986c84d9fffebb6a6ced79,
     type: 3}
   playerScore: 0
   beeScore: 0

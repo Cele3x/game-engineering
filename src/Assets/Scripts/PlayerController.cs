@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     public float MaxHealth { get { return maxHealth; } }
     public float MaxTotalHealth { get { return maxTotalHealth; } }
 
+    private bool canSpray = false;
+
     public delegate void OnHealthChangedDelegate();
     public OnHealthChangedDelegate onHealthChangedCallback;
     private static readonly int Spray1 = Animator.StringToHash("spray");
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         sprayLauncher = spray.GetComponentInChildren<SprayLauncher>();
+        spray.SetActive(false);
     }
 
     // Update is called once per frame
@@ -73,6 +76,13 @@ public class PlayerController : MonoBehaviour
 
 
     }
+
+    internal void CollectSpray()
+    {
+        spray.SetActive(true);
+        canSpray = true;
+    }
+
     public void TakeDamage(float damage)
     {
         health -= damage;
@@ -97,11 +107,15 @@ public class PlayerController : MonoBehaviour
     void Spray()
     {
         //animator.SetTrigger(Spray1);
-        sprayLauncher.EmitSpray();
+        if (canSpray) { sprayLauncher.EmitSpray(); }
+        
     }
 
     private void StopSpray()
     {
-        sprayLauncher.StopSpray();
+        if (canSpray)
+        {
+            sprayLauncher.StopSpray();
+        }
     }
 }
