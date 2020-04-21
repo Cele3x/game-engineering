@@ -5,11 +5,18 @@ using UnityEngine;
 
 public class LifeBarController : MonoBehaviour
 {
-    public TextMeshProUGUI hudLives;
     private PlayerController playerController;
+    private Lang livesLang;
+
+
+    [SerializeField] private TextMeshProUGUI hudLives;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        livesLang = new Lang("German");
+
         GameObject player = GameObject.Find("Player");
         playerController = player.GetComponent<PlayerController>();
 
@@ -17,5 +24,5 @@ public class LifeBarController : MonoBehaviour
         UpdateLivesHUD();
     }
 
-    private void UpdateLivesHUD() { hudLives.text = playerController.Health + " Lives"; }
+    private void UpdateLivesHUD() { hudLives.text = playerController.Health + " " + livesLang.GetEntry("ingame_lives"); }
 }

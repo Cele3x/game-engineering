@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityStandardAssets.Characters.FirstPerson;
+using TMPro;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -10,7 +11,19 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
+    private Lang pauseLang;
 
+
+    [SerializeField] private TextMeshProUGUI resumeText;
+    [SerializeField] private TextMeshProUGUI toTitleText;
+
+    void Start()
+    {
+        pauseLang = new Lang("German");
+
+        resumeText.text = pauseLang.GetEntry("pause_resume");
+        toTitleText.text = pauseLang.GetEntry("pause_gameover_title");
+    }
 
     // Update is called once per frame
     void Update()

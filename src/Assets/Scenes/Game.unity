@@ -239,6 +239,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1555380113}
+  resumeText: {fileID: 2001402812}
+  toTitleText: {fileID: 0}
 --- !u!114 &4986063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +269,8 @@ MonoBehaviour:
   gameOverMenuUI: {fileID: 1066676079}
   displayTimerText: {fileID: 1048954654}
   ingameTimerText: {fileID: 1855847579}
+  resultTimeText: {fileID: 1581642904}
+  toTitleText: {fileID: 16057429}
 --- !u!4 &6290543 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 458416, guid: 58176fbf71be51f45ab216fdd7d45a7a,
@@ -285,7 +289,7 @@ GameObject:
   - component: {fileID: 16057430}
   - component: {fileID: 16057429}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: GameOver_ToTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6259,7 +6263,7 @@ GameObject:
   - component: {fileID: 1179770720}
   - component: {fileID: 1179770719}
   m_Layer: 5
-  m_Name: GameOver_TitleText
+  m_Name: GameOver_Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9887,7 +9891,7 @@ GameObject:
   - component: {fileID: 2001402813}
   - component: {fileID: 2001402812}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: PauseMenu_ResumeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10561,7 +10565,7 @@ GameObject:
   - component: {fileID: 2133989283}
   - component: {fileID: 2133989282}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: PauseMenu_TitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

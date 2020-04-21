@@ -12,13 +12,22 @@ public class GameOverMenu : MonoBehaviour
     public GameObject gameOverMenuUI;
 
     private PlayerController playerController;
+    private Lang gameOverLang;
+
     [SerializeField] private TextMeshProUGUI displayTimerText;
     [SerializeField] private TextMeshProUGUI ingameTimerText;
+    [SerializeField] private TextMeshProUGUI resultTimeText;
+    [SerializeField] private TextMeshProUGUI toTitleText;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        gameOverLang = new Lang("German");
         playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+
+        resultTimeText.text = gameOverLang.GetEntry("gameover_time");
+        toTitleText.text = gameOverLang.GetEntry("pause_gameover_title");
     }
 
     // Update is called once per frame

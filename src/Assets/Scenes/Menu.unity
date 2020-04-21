@@ -1728,6 +1728,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 2051883474}
+  optionsText: {fileID: 332731911714884253}
+  quitText: {fileID: 634558512}
+  optionsTitleText: {fileID: 1283882686848493737}
+  volumeText: {fileID: 509867078}
+  backText: {fileID: 1283882687426421369}
 --- !u!222 &332731911714884252
 CanvasRenderer:
   m_ObjectHideFlags: 0
