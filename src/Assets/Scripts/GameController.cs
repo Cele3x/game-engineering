@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-   
+
+    public GameObject pauseMenuUI;
     public GameObject playerBody;
     public GameObject beePrefab;
     private GameObject parent;
