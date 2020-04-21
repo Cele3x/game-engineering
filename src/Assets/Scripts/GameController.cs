@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
 
-    public GameObject pauseMenuUI;
+    public GameObject gameOverUI;
     public GameObject playerBody;
     public GameObject beePrefab;
     private GameObject parent;
@@ -57,8 +57,6 @@ public class GameController : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log("Game Over!");
-        //TODO show Game Over Screen GameOverUI.SetActive(true);
-
+        gameOverUI.SetActive(true);
     }
 }

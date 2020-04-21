@@ -11,7 +11,6 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
 
-    //[SerializeField] MouseLook m_MouseLook;
 
     // Update is called once per frame
     void Update()
