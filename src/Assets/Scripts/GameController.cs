@@ -96,5 +96,9 @@ public class GameController : MonoBehaviour
     public void GameOver()
     {
         gameOverUI.SetActive(true);
+        Time.timeScale = 0f;
+        AudioListener.pause = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }

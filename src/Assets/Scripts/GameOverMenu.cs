@@ -8,10 +8,8 @@ using TMPro;
 public class GameOverMenu : MonoBehaviour
 {
 
-    public static bool gameIsOver = false;
     public GameObject gameOverMenuUI;
 
-    private PlayerController playerController;
     private Lang gameOverLang;
 
     [SerializeField] private TextMeshProUGUI displayTimerText;
@@ -24,29 +22,19 @@ public class GameOverMenu : MonoBehaviour
     void Start()
     {
         gameOverLang = new Lang(PlayerPrefs.GetString("LanguageSetting"));
-        playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+
+        Debug.Log(gameOverLang.GetEntry("gameover_time"));
+        Debug.Log(gameOverLang.GetEntry("pause_gameover_title"));
 
         resultTimeText.text = gameOverLang.GetEntry("gameover_time");
         toTitleText.text = gameOverLang.GetEntry("pause_gameover_title");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if(playerController.Health <= 0)
-        {
-            gameIsOver = true;
-        }
-
-        if (gameIsOver)
-        {
-            displayTimerText.text = ingameTimerText.text;
-            Time.timeScale = 0f;
-            AudioListener.pause = true;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
+            displayTimerText.text = ingameTimerText.text;   
     }
 
     public void ReturnToTitle()
@@ -55,7 +43,6 @@ public class GameOverMenu : MonoBehaviour
         AudioListener.pause = false;
         SceneManager.LoadScene(0);
         gameOverMenuUI.SetActive(false);
-        gameIsOver = false;
     }
 
 }
