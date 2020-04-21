@@ -23,7 +23,7 @@ public class GameOverMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameOverLang = new Lang("German");
+        gameOverLang = new Lang(PlayerPrefs.GetString("LanguageSetting"));
         playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
 
         resultTimeText.text = gameOverLang.GetEntry("gameover_time");

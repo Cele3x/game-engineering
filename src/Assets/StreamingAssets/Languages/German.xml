@@ -9,5 +9,7 @@
         <string name="pause_resume">Fortsetzen</string>
         <string name="pause_gameover_title">Titel</string>
         <string name="gameover_time">Zeit</string>
+        <string name="options_language_text">Sprache</string>
+        <string name="options_language_button">Englisch</string>
     </German>
 </languages>

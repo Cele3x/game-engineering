@@ -19,7 +19,7 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
-        pauseLang = new Lang("German");
+        pauseLang = new Lang(PlayerPrefs.GetString("LanguageSetting"));
 
         resumeText.text = pauseLang.GetEntry("pause_resume");
         toTitleText.text = pauseLang.GetEntry("pause_gameover_title");

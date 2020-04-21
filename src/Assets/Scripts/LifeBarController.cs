@@ -15,7 +15,7 @@ public class LifeBarController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        livesLang = new Lang("German");
+        livesLang = new Lang(PlayerPrefs.GetString("LanguageSetting"));
 
         GameObject player = GameObject.Find("Player");
         playerController = player.GetComponent<PlayerController>();
