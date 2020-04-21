@@ -61,15 +61,14 @@ public class MainMenu : MonoBehaviour
         if (PlayerPrefs.GetString("LanguageSetting") == "English")
         {
             PlayerPrefs.SetString("LanguageSetting", "German");
-            mainMenuLang.SetLanguage(PlayerPrefs.GetString("LanguageSetting", "English"));
-
-            Debug.Log(PlayerPrefs.GetString("LanguageSetting"));
-        } else if (PlayerPrefs.GetString("LanguageSetting") == "German")
+            mainMenuLang.SetLanguage(PlayerPrefs.GetString("LanguageSetting"));
+            changeMainMenuLanguage();
+        }
+        else if (PlayerPrefs.GetString("LanguageSetting") == "German")
         {
             PlayerPrefs.SetString("LanguageSetting", "English");
-            mainMenuLang.SetLanguage(PlayerPrefs.GetString("LanguageSetting", "English"));
-
-            Debug.Log(PlayerPrefs.GetString("LanguageSetting"));
+            mainMenuLang.SetLanguage(PlayerPrefs.GetString("LanguageSetting"));
+            changeMainMenuLanguage();
         }
     }
 
