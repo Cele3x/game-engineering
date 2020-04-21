@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<languages>
+    <English>
+        <string name="main_options">Options</string>
+        <string name="main_quit">Quit</string>
+        <string name="options_volume">Volume</string>
+        <string name="options_back">Back</string>
+        <string name="ingame_lives">Lives</string>
+        <string name="pause_resume">Resume</string>
+        <string name="pause_gameover_title">Title</string>
+        <string name="gameover_time">Time</string>
+    </English>
+
+    <German>
+        <string name="main_options">Optionen</string>
+        <string name="main_quit">Beenden</string>
+        <string name="options_volume">Lautstärke</string>
+        <string name="options_back">Zurück</string>
+        <string name="ingame_lives">Leben</string>
+        <string name="pause_resume">Fortsetzen</string>
+        <string name="pause_gameover_title">Titel</string>
+        <string name="gameover_time">Zeit</string>
+    </German>
+</languages>

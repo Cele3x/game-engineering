@@ -7,10 +7,12 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     public Slider slider;
+    private Lang mainMenuLang;
 
     void Start()
     {
         Cursor.visible = true;
+        changeMainMenuLanguage();
         slider.value = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
     }
 
@@ -24,6 +26,11 @@ public class MainMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void changeMainMenuLanguage()
+    {
+        mainMenuLang = new Lang(Path.Combine(Application.dataPath, "lang.xml"), "English", false);
     }
 
 
