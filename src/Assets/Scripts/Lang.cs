@@ -16,8 +16,6 @@ using System.Xml;
 using System.Text;
 
 using UnityEngine;
-using RotaryHeart.Lib.SerializableDictionary;
-
 
 public class Lang
 {
