@@ -12,19 +12,16 @@ public class GameOverMenu : MonoBehaviour
 
     private Lang gameOverLang;
 
-    [SerializeField] private TextMeshProUGUI displayTimerText;
-    [SerializeField] private TextMeshProUGUI ingameTimerText;
-    [SerializeField] private TextMeshProUGUI resultTimeText;
-    [SerializeField] private TextMeshProUGUI toTitleText;
+    [SerializeField] public TextMeshProUGUI displayTimerText;
+    [SerializeField] public TextMeshProUGUI ingameTimerText;
+    [SerializeField] public TextMeshProUGUI resultTimeText;
+    [SerializeField] public TextMeshProUGUI toTitleText;
 
 
     // Start is called before the first frame update
     void Start()
     {
         gameOverLang = new Lang(PlayerPrefs.GetString("LanguageSetting"));
-
-        Debug.Log(gameOverLang.GetEntry("gameover_time"));
-        Debug.Log(gameOverLang.GetEntry("pause_gameover_title"));
 
         resultTimeText.text = gameOverLang.GetEntry("gameover_time");
         toTitleText.text = gameOverLang.GetEntry("pause_gameover_title");

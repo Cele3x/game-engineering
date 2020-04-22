@@ -14,8 +14,8 @@ public class PauseMenu : MonoBehaviour
     private Lang pauseLang;
 
 
-    [SerializeField] private TextMeshProUGUI resumeText;
-    [SerializeField] private TextMeshProUGUI toTitleText;
+    [SerializeField] public TextMeshProUGUI resumeText;
+    [SerializeField] public TextMeshProUGUI toTitleText;
 
     void Start()
     {

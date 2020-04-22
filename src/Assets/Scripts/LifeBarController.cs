@@ -9,7 +9,7 @@ public class LifeBarController : MonoBehaviour
     private Lang livesLang;
 
 
-    [SerializeField] private TextMeshProUGUI hudLives;
+    [SerializeField] public TextMeshProUGUI hudLives;
 
 
     // Start is called before the first frame update

@@ -11,19 +11,20 @@ public class MainMenu : MonoBehaviour
     public Slider slider;
     private Lang mainMenuLang;
 
-    [SerializeField] private TextMeshProUGUI optionsText;
-    [SerializeField] private TextMeshProUGUI quitText;
-    [SerializeField] private TextMeshProUGUI optionsTitleText;
-    [SerializeField] private TextMeshProUGUI volumeText;
-    [SerializeField] private TextMeshProUGUI backText;
-    [SerializeField] private TextMeshProUGUI languageText;
-    [SerializeField] private TextMeshProUGUI languageButtonText;
+    [SerializeField] public TextMeshProUGUI optionsText;
+    [SerializeField] public TextMeshProUGUI quitText;
+    [SerializeField] public TextMeshProUGUI optionsTitleText;
+    [SerializeField] public TextMeshProUGUI volumeText;
+    [SerializeField] public TextMeshProUGUI backText;
+    [SerializeField] public TextMeshProUGUI languageText;
+    [SerializeField] public TextMeshProUGUI languageButtonText;
 
     void Start()
     {
         Cursor.visible = true;
         slider.value = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
         mainMenuLang = new Lang(PlayerPrefs.GetString("LanguageSetting", "English"));
+        Debug.Log(mainMenuLang);
     }
 
     void Update()
