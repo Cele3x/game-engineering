@@ -25,12 +25,18 @@ public class MainMenu : MonoBehaviour
     {
         Cursor.visible = true;
         slider.value = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
-
     }
 
     void Update()
     {
-        PlayerPrefs.GetString(langKey);
+        if (PlayerPrefs.GetString(langKey, langDefault) == "German")
+        {
+            changeMainMenuLanguageToGerman();
+        }
+        else if (PlayerPrefs.GetString(langKey, langDefault) == "English")
+        {
+            changeMainMenuLanguageToEnglish();
+        }
     }
 
     public void PlayGame() 
@@ -45,6 +51,7 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    //Switches the language on the press of the switch language button
     public void switchLanguage()
     {
 
