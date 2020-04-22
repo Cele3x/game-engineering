@@ -19,10 +19,7 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
-        pauseLang = new Lang(PlayerPrefs.GetString("LanguageSetting"));
-
-        resumeText.text = pauseLang.GetEntry("pause_resume");
-        toTitleText.text = pauseLang.GetEntry("pause_gameover_title");
+        setLanguage(PlayerPrefs.GetString("LanguageSetting"));
     }
 
     // Update is called once per frame
@@ -71,6 +68,20 @@ public class PauseMenu : MonoBehaviour
         AudioListener.pause = false;
         GameIsPaused = false;
         SceneManager.LoadScene(0);
+    }
+
+    public void setLanguage(string lang)
+    {
+        if (lang == "English")
+        {
+            resumeText.text = "Resume";
+            toTitleText.text = "Title";
+        } 
+        else if (lang == "German")
+        {
+            resumeText.text = "Fortsetzen";
+            toTitleText.text = "Titel";
+        }
     }
 
 }

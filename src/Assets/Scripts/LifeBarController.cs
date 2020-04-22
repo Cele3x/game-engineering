@@ -6,8 +6,7 @@ using UnityEngine;
 public class LifeBarController : MonoBehaviour
 {
     private PlayerController playerController;
-    private Lang livesLang;
-
+    private string langLives;
 
     [SerializeField] public TextMeshProUGUI hudLives;
 
@@ -15,14 +14,29 @@ public class LifeBarController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        livesLang = new Lang(PlayerPrefs.GetString("LanguageSetting"));
-
         GameObject player = GameObject.Find("Player");
         playerController = player.GetComponent<PlayerController>();
 
         playerController.onHealthChangedCallback += UpdateLivesHUD;
+        setLanguage(PlayerPrefs.GetString("LanguageSetting"));
         UpdateLivesHUD();
     }
 
-    private void UpdateLivesHUD() { hudLives.text = playerController.Health + " " + livesLang.GetEntry("ingame_lives"); }
+    private void UpdateLivesHUD()
+    {
+        hudLives.text = playerController.Health + " " + langLives; 
+    }
+
+    private void setLanguage(string lang)
+    {
+        if (lang == "English")
+        {
+            langLives = "Lives";
+        }
+        else if (lang == "German") 
+        { 
+            langLives = "Leben"; 
+        }
+    }
+
 }

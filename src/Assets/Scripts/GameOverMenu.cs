@@ -21,11 +21,7 @@ public class GameOverMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameOverLang = new Lang(PlayerPrefs.GetString("LanguageSetting"));
-
-        resultTimeText.text = gameOverLang.GetEntry("gameover_time");
-        toTitleText.text = gameOverLang.GetEntry("pause_gameover_title");
-
+        setLanguage(PlayerPrefs.GetString("LanguageSetting"));
     }
 
     // Update is called once per frame
@@ -40,6 +36,20 @@ public class GameOverMenu : MonoBehaviour
         AudioListener.pause = false;
         SceneManager.LoadScene(0);
         gameOverMenuUI.SetActive(false);
+    }
+
+    public void setLanguage(string lang)
+    {
+        if (lang == "English")
+        {
+            resultTimeText.text = "Time";
+            toTitleText.text = "Title";
+        }
+        else if (lang == "German")
+        {
+            resultTimeText.text = "Zeit";
+            toTitleText.text = "Titel";
+        }
     }
 
 }

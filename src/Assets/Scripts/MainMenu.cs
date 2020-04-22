@@ -9,7 +9,9 @@ using TMPro;
 public class MainMenu : MonoBehaviour
 {
     public Slider slider;
-    private Lang mainMenuLang;
+
+    private string langKey = "LanguageSetting";
+    private string langDefault = "English";
 
     [SerializeField] public TextMeshProUGUI optionsText;
     [SerializeField] public TextMeshProUGUI quitText;
@@ -23,13 +25,12 @@ public class MainMenu : MonoBehaviour
     {
         Cursor.visible = true;
         slider.value = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
-        mainMenuLang = new Lang(PlayerPrefs.GetString("LanguageSetting", "English"));
-        Debug.Log(mainMenuLang);
+
     }
 
     void Update()
     {
-        changeMainMenuLanguage();
+        PlayerPrefs.GetString(langKey);
     }
 
     public void PlayGame() 
@@ -44,33 +45,43 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void changeMainMenuLanguage() 
-    { 
-        //setLanguage as preference
-        optionsText.text = mainMenuLang.GetEntry("main_options");
-        quitText.text = mainMenuLang.GetEntry("main_quit");
-        optionsTitleText.text = mainMenuLang.GetEntry("main_options");
-        volumeText.text = mainMenuLang.GetEntry("options_volume");
-        backText.text = mainMenuLang.GetEntry("options_back");
-        languageText.text = mainMenuLang.GetEntry("options_language_text");
-        languageButtonText.text = mainMenuLang.GetEntry("options_language_button");
-    }
-
     public void switchLanguage()
     {
 
-        if (PlayerPrefs.GetString("LanguageSetting") == "English")
+        if (PlayerPrefs.GetString(langKey, langDefault) == "English")
         {
-            PlayerPrefs.SetString("LanguageSetting", "German");
-            mainMenuLang.SetLanguage(PlayerPrefs.GetString("LanguageSetting"));
-            changeMainMenuLanguage();
+            PlayerPrefs.SetString(langKey, "German");
+            changeMainMenuLanguageToGerman();
         }
-        else if (PlayerPrefs.GetString("LanguageSetting") == "German")
+        else if (PlayerPrefs.GetString(langKey, langDefault) == "German")
         {
-            PlayerPrefs.SetString("LanguageSetting", "English");
-            mainMenuLang.SetLanguage(PlayerPrefs.GetString("LanguageSetting"));
-            changeMainMenuLanguage();
+            PlayerPrefs.SetString(langKey, "English");
+            changeMainMenuLanguageToEnglish();
         }
+    }
+
+    public void changeMainMenuLanguageToGerman()
+    {
+        //setLanguage as preference
+        optionsText.text = "Optionen";
+        quitText.text = "Beenden";
+        optionsTitleText.text = "Optionen";
+        volumeText.text = "Lautstärke";
+        backText.text = "Zurück";
+        languageText.text = "Sprache Wechseln";
+        languageButtonText.text = "Englisch";
+    }
+
+    public void changeMainMenuLanguageToEnglish()
+    {
+        //setLanguage as preference
+        optionsText.text = "Options";
+        quitText.text = "Quit";
+        optionsTitleText.text = "Options";
+        volumeText.text = "Volume";
+        backText.text = "Back";
+        languageText.text = "Switch Language";
+        languageButtonText.text = "German";
     }
 
 
