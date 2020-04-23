@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
     private KeyCode swatterKey;
     private KeyCode sprayKey;
 
+    private float sprayTimer = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -86,6 +88,7 @@ public class PlayerController : MonoBehaviour
     {
         spray.SetActive(true);
         canSpray = true;
+        sprayTimer = 0;
     }
 
     public void TakeDamage(float damage)
@@ -112,8 +115,20 @@ public class PlayerController : MonoBehaviour
     void Spray()
     {
         //animator.SetTrigger(Spray1);
-        if (canSpray) { sprayLauncher.EmitSpray(); }
-        
+        if (canSpray) 
+        { 
+            sprayLauncher.EmitSpray();
+            sprayTimer += Time.deltaTime;
+        }
+
+        if (sprayTimer >= 10)
+        {
+            canSpray = false;
+            sprayLauncher.StopSpray();
+            spray.SetActive(false);
+        }
+
+        Debug.Log(sprayTimer);
     }
 
     private void StopSpray()
