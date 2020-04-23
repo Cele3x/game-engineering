@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour
     private static readonly string HitStateName = "Hit";
     private static readonly int Hit1 = Animator.StringToHash("hit");
 
+    private KeyCode swatterKey;
+    private KeyCode sprayKey;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,15 +45,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        setControlScheme();
+
+        if (Input.GetKeyDown(swatterKey))
         {
             Hit();
         } 
-        if (Input.GetKey(KeyCode.Mouse1))
+        if (Input.GetKey(sprayKey))
         {
             Spray();
         }
-        else if (Input.GetKeyUp(KeyCode.Mouse1))
+        else if (Input.GetKeyUp(sprayKey))
         {
             StopSpray();
         }
@@ -116,6 +121,20 @@ public class PlayerController : MonoBehaviour
         if (canSpray)
         {
             sprayLauncher.StopSpray();
+        }
+    }
+
+    private void setControlScheme()
+    {
+        if (PlayerPrefs.GetString("ControlSetting", "defaultControls") == "defaultControls")
+        {
+            swatterKey = KeyCode.Mouse0;
+            sprayKey = KeyCode.Mouse1;
+        }
+        else if (PlayerPrefs.GetString("ControlSetting", "defaultControls") == "altControls")
+        {
+            swatterKey = KeyCode.Mouse1;
+            sprayKey = KeyCode.Mouse0;
         }
     }
 }

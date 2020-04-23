@@ -714,7 +714,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 423881151}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 332731911361785704}
+        m_MethodName: changeMouseControls
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &423881151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2715,6 +2726,8 @@ MonoBehaviour:
   backText: {fileID: 1283882687426421369}
   languageText: {fileID: 1736979778}
   languageButtonText: {fileID: 60012032}
+  controlsText: {fileID: 375249536}
+  controlsButtonText: {fileID: 706893012}
 --- !u!222 &332731911714884252
 CanvasRenderer:
   m_ObjectHideFlags: 0

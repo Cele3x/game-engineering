@@ -11,15 +11,18 @@ public class MainMenu : MonoBehaviour
     public Slider slider;
 
     private string langKey = "LanguageSetting";
+    private string controlKey = "ControlSetting";
     private string langDefault = "English";
 
-    [SerializeField] public TextMeshProUGUI optionsText;
-    [SerializeField] public TextMeshProUGUI quitText;
-    [SerializeField] public TextMeshProUGUI optionsTitleText;
-    [SerializeField] public TextMeshProUGUI volumeText;
-    [SerializeField] public TextMeshProUGUI backText;
-    [SerializeField] public TextMeshProUGUI languageText;
-    [SerializeField] public TextMeshProUGUI languageButtonText;
+    [SerializeField] private TextMeshProUGUI optionsText = null;
+    [SerializeField] private TextMeshProUGUI quitText = null;
+    [SerializeField] private TextMeshProUGUI optionsTitleText = null;
+    [SerializeField] private TextMeshProUGUI volumeText = null;
+    [SerializeField] private TextMeshProUGUI backText = null;
+    [SerializeField] private TextMeshProUGUI languageText = null;
+    [SerializeField] private TextMeshProUGUI languageButtonText = null;
+    [SerializeField] private TextMeshProUGUI controlsText = null;
+    [SerializeField] private TextMeshProUGUI controlsButtonText = null;
 
     void Start()
     {
@@ -77,6 +80,8 @@ public class MainMenu : MonoBehaviour
         backText.text = "Zurück";
         languageText.text = "Sprache Wechseln";
         languageButtonText.text = "Englisch";
+        controlsText.text = "Umgekehrte Maussteuerung";
+        controlsButtonText.text = "Sprühen/Angreifen";
     }
 
     public void changeMainMenuLanguageToEnglish()
@@ -89,6 +94,22 @@ public class MainMenu : MonoBehaviour
         backText.text = "Back";
         languageText.text = "Switch Language";
         languageButtonText.text = "German";
+        controlsText.text = "Reverse Mouse Controls";
+        controlsButtonText.text = "Spray/Attack";
+    }
+
+    public void changeMouseControls()
+    {
+        if (PlayerPrefs.GetString(controlKey, "defaultControls") == "defaultControls")
+        {
+            Debug.Log("Jetzt sind alternative eingeschaltet");
+            PlayerPrefs.SetString(controlKey, "altControls");
+        }
+        else if (PlayerPrefs.GetString(controlKey, "defaultControls") == "altControls")
+        {
+            Debug.Log("default default default");
+            PlayerPrefs.SetString(controlKey, "defaultControls");
+        }
     }
 
 

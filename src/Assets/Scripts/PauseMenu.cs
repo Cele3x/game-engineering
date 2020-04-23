@@ -11,11 +11,10 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
-    private Lang pauseLang;
 
 
-    [SerializeField] public TextMeshProUGUI resumeText;
-    [SerializeField] public TextMeshProUGUI toTitleText;
+    [SerializeField] private TextMeshProUGUI resumeText = null;
+    [SerializeField] private TextMeshProUGUI toTitleText = null;
 
     void Start()
     {
