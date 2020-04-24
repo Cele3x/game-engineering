@@ -9,11 +9,18 @@ public class GameOverMenu : MonoBehaviour
 {
 
     public GameObject gameOverMenuUI;
+    public Timer timer;
 
-    [SerializeField] private TextMeshProUGUI displayTimerText = null;
-    [SerializeField] private TextMeshProUGUI ingameTimerText = null;
-    [SerializeField] private TextMeshProUGUI resultTimeText = null;
-    [SerializeField] private TextMeshProUGUI toTitleText = null;
+    [SerializeField] 
+    private TextMeshProUGUI displayTimerText = null;
+    [SerializeField] 
+    private TextMeshProUGUI ingameTimerText = null;
+    [SerializeField] 
+    private TextMeshProUGUI resultTimeText = null;
+    [SerializeField] 
+    private TextMeshProUGUI toTitleText = null;
+    [SerializeField]
+    private TextMeshProUGUI highscoreTimerText = null;
 
 
     // Start is called before the first frame update
@@ -25,7 +32,9 @@ public class GameOverMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            displayTimerText.text = ingameTimerText.text;   
+        displayTimerText.text = ingameTimerText.text;
+        timer.setNewHighscore();
+        highscoreTimerText.text = PlayerPrefs.GetFloat("Highscore", 0).ToString("F");
     }
 
     public void ReturnToTitle()

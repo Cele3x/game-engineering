@@ -18,4 +18,13 @@ public class Timer : MonoBehaviour
             timer += Time.deltaTime;
             uiText.text = timer.ToString("F");
     }
+
+    public void setNewHighscore()
+    {
+        if (PlayerPrefs.GetFloat("Highscore", 0) < timer)
+        {
+            PlayerPrefs.SetFloat("Highscore", timer);
+        }
+    }
+
 }
