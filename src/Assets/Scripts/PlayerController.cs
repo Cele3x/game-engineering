@@ -16,8 +16,14 @@ public class PlayerController : MonoBehaviour
 
     public GameObject swatter;
     public GameObject spray;
+    public SprayBar sprayBar;
+
     private SprayLauncher sprayLauncher;
     private Animator animator;
+    private KeyCode swatterKey;
+    private KeyCode sprayKey;
+
+    private float sprayTimer = 0;
 
     public float Health { get { return health; } }
     public float MaxHealth { get { return maxHealth; } }
@@ -27,14 +33,11 @@ public class PlayerController : MonoBehaviour
 
     public delegate void OnHealthChangedDelegate();
     public OnHealthChangedDelegate onHealthChangedCallback;
+
     private static readonly int Spray1 = Animator.StringToHash("spray");
     private static readonly string HitStateName = "Hit";
     private static readonly int Hit1 = Animator.StringToHash("hit");
 
-    private KeyCode swatterKey;
-    private KeyCode sprayKey;
-
-    private float sprayTimer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +50,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        setControlScheme();
+        SetControlScheme();
 
         if (Input.GetKeyDown(swatterKey))
         {
@@ -87,8 +90,10 @@ public class PlayerController : MonoBehaviour
     internal void CollectSpray()
     {
         spray.SetActive(true);
+        sprayBar.SetSprayBarVisibility(true);
         canSpray = true;
         sprayTimer = 0;
+        sprayBar.ResetSprayBar();
     }
 
     public void TakeDamage(float damage)
@@ -119,16 +124,17 @@ public class PlayerController : MonoBehaviour
         { 
             sprayLauncher.EmitSpray();
             sprayTimer += Time.deltaTime;
+            sprayBar.SetCurrentSprayBarValue();
         }
 
-        if (sprayTimer >= 10)
+        if (sprayTimer > 10)
         {
             canSpray = false;
             sprayLauncher.StopSpray();
             spray.SetActive(false);
+            sprayBar.SetSprayBarVisibility(false);
         }
 
-        Debug.Log(sprayTimer);
     }
 
     private void StopSpray()
@@ -139,7 +145,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void setControlScheme()
+    private void SetControlScheme()
     {
         if (PlayerPrefs.GetString("ControlSetting", "defaultControls") == "defaultControls")
         {
