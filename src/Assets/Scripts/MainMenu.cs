@@ -14,15 +14,24 @@ public class MainMenu : MonoBehaviour
     private string controlKey = "ControlSetting";
     private string langDefault = "English";
 
-    [SerializeField] private TextMeshProUGUI optionsText = null;
-    [SerializeField] private TextMeshProUGUI quitText = null;
-    [SerializeField] private TextMeshProUGUI optionsTitleText = null;
-    [SerializeField] private TextMeshProUGUI volumeText = null;
-    [SerializeField] private TextMeshProUGUI backText = null;
-    [SerializeField] private TextMeshProUGUI languageText = null;
-    [SerializeField] private TextMeshProUGUI languageButtonText = null;
-    [SerializeField] private TextMeshProUGUI controlsText = null;
-    [SerializeField] private TextMeshProUGUI controlsButtonText = null;
+    [SerializeField] 
+    private TextMeshProUGUI optionsText = null;
+    [SerializeField] 
+    private TextMeshProUGUI quitText = null;
+    [SerializeField] 
+    private TextMeshProUGUI optionsTitleText = null;
+    [SerializeField] 
+    private TextMeshProUGUI volumeText = null;
+    [SerializeField] 
+    private TextMeshProUGUI backText = null;
+    [SerializeField] 
+    private TextMeshProUGUI languageText = null;
+    [SerializeField] 
+    private TextMeshProUGUI languageButtonText = null;
+    [SerializeField] 
+    private TextMeshProUGUI controlsText = null;
+    [SerializeField] 
+    private TextMeshProUGUI controlsButtonText = null;
 
     void Start()
     {
@@ -102,12 +111,10 @@ public class MainMenu : MonoBehaviour
     {
         if (PlayerPrefs.GetString(controlKey, "defaultControls") == "defaultControls")
         {
-            Debug.Log("Jetzt sind alternative eingeschaltet");
             PlayerPrefs.SetString(controlKey, "altControls");
         }
         else if (PlayerPrefs.GetString(controlKey, "defaultControls") == "altControls")
         {
-            Debug.Log("default default default");
             PlayerPrefs.SetString(controlKey, "defaultControls");
         }
     }

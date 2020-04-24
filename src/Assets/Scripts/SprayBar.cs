@@ -18,12 +18,6 @@ public class SprayBar : MonoBehaviour
         sprayBarFill = GetComponent<Slider>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ResetSprayBar()
     {
         sprayBarFill.value = maxSprayDuration;
