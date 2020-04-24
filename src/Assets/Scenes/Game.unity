@@ -1612,6 +1612,11 @@ PrefabInstance:
       propertyPath: sprayBar
       value: 
       objectReference: {fileID: 240998188}
+    - target: {fileID: 81983115402974096, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2520837078707746953, guid: 5e9e851c0e142814dac026a256ba2ac0,
         type: 3}
       propertyPath: m_Avatar

@@ -30,6 +30,7 @@ public class BeeController : MonoBehaviour
     private static readonly int Move = Animator.StringToHash("move");
     private static readonly int Idle = Animator.StringToHash("idle");
     private static readonly int Die = Animator.StringToHash("die");
+    private static readonly int Damage = Animator.StringToHash("takedamage");
 
     void Start()
     {
@@ -134,6 +135,7 @@ public class BeeController : MonoBehaviour
         _navMeshAgent.enabled = false;
     }
     public void OnSwatterHit(GameObject swatter) {
+        _beeAnimator.SetTrigger(Damage);
         transform.LookAt(swatter.transform.position);
         transform.position = Vector3.Lerp(transform.position, transform.forward * -200, Time.deltaTime*0.7f);
     }
