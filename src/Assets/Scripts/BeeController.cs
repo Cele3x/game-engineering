@@ -57,6 +57,7 @@ public class BeeController : MonoBehaviour
         else
         {
             _distanceToTarget = Vector3.Distance(target.position, transform.position);
+
             if (_distanceToTarget >= _navMeshAgent.stoppingDistance)
             {
                 ChaseTarget();
@@ -65,6 +66,8 @@ public class BeeController : MonoBehaviour
             {
                 AttackTarget();
             }
+
+
         }
     }
 
@@ -95,7 +98,7 @@ public class BeeController : MonoBehaviour
     {
         _beeAnimator.SetBool(Move, false);
         _beeAnimator.SetTrigger(Attack);
-        _beeAnimator.SetBool(Idle, true);
+        _beeAnimator.SetBool(Move, true);
     }
 
 
