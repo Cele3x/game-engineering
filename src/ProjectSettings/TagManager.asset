@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - DynamicGameObjects
   - Timer
+  - Unstingable
   layers:
   - Default
   - TransparentFX
