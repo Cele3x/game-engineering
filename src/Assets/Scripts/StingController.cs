@@ -16,8 +16,12 @@ public class StingController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Unstingable")) { _beeController.CollisionFromChild(other); }
-        
+        if (other.CompareTag("Player")){
+            if (!other.CompareTag("Unstingable")) {
+
+                _beeController.CollisionFromChild(other);
+            }
+        }  
     }
 
 }
