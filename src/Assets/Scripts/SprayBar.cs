@@ -10,7 +10,7 @@ public class SprayBar : MonoBehaviour
     public Slider sprayBarFill;
     public GameObject sprayBar;
 
-    private float maxSprayDuration = 10;
+    private float maxSprayDuration = 4;
 
 
     void Awake()

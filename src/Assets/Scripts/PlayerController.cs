@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
             sprayBar.SetCurrentSprayBarValue();
         }
 
-        if (sprayTimer > 10)
+        if (sprayTimer >= 4)
         {
             canSpray = false;
             sprayLauncher.StopSpray();
