@@ -11,6 +11,7 @@ public class BeeController : MonoBehaviour
     private GameController _gameController;
     private NavMeshAgent _navMeshAgent;
     private Animator _beeAnimator;
+    private Rigidbody rigidBody;
     private AudioSource _audioSource;
     private float _distanceToTarget = Mathf.Infinity;
     private Boolean _isSuccessful;
@@ -38,6 +39,7 @@ public class BeeController : MonoBehaviour
         _beeAnimator = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _audioSource = GetComponent<AudioSource>();
+        rigidBody = GetComponent<Rigidbody>();
         _beeAnimator.SetBool(Idle, true);
         initialWingSpeed = _beeAnimator.speed;
         initialNavSpeed = _navMeshAgent.speed;
@@ -79,7 +81,7 @@ public class BeeController : MonoBehaviour
         {
             SetNumbState(false);
         }
-        Debug.Log("Time Left: "+ Math.Round(numbTimeLeft, 2));
+       // Debug.Log("Time Left: "+ Math.Round(numbTimeLeft, 2));
 
     }
 
@@ -104,6 +106,7 @@ public class BeeController : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
+  
         if (!isNumb) {
             SetNumbState(true);
         }
@@ -138,9 +141,16 @@ public class BeeController : MonoBehaviour
         _navMeshAgent.enabled = false;
     }
     public void OnSwatterHit(GameObject swatter) {
+        int force = 1000;
         _beeAnimator.SetTrigger(Damage);
         transform.LookAt(swatter.transform.position);
-        transform.position = Vector3.Lerp(transform.position, transform.forward * -200, Time.deltaTime*0.7f);
+   
+        var dir = -(swatter.transform.position - transform.position).normalized;
+        rigidBody.AddForce(dir * force, ForceMode.Impulse);
+
+        //rigidBody.AddForce(transform.forward * -1000, ForceMode.Impulse);
+        //transform.position = Vector3.Lerp(transform.position, transform.forward * -200, Time.deltaTime*0.1f);
+
     }
 
     private void GetAway()

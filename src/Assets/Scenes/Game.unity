@@ -1682,6 +1682,22 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 311
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_Mass
+      value: 0.0000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_Drag
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_MouseLook.lockCursor
       value: 0
@@ -1708,7 +1724,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 499647810, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: CollisionModule.quality
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 499647810, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: useRigidbodyForVelocity
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 499647812, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: OutputAudioMixerGroup
