@@ -716,7 +716,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 332731911361785704}
-        m_MethodName: changeMouseControls
+        m_MethodName: ChangeMouseControls
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2009,7 +2009,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 332731911361785704}
-        m_MethodName: switchLanguage
+        m_MethodName: SwitchLanguage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

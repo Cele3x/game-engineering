@@ -14,23 +14,23 @@ public class MainMenu : MonoBehaviour
     private string controlKey = "ControlSetting";
     private string langDefault = "English";
 
-    [SerializeField] 
+    [SerializeField]
     private TextMeshProUGUI optionsText = null;
-    [SerializeField] 
+    [SerializeField]
     private TextMeshProUGUI quitText = null;
-    [SerializeField] 
+    [SerializeField]
     private TextMeshProUGUI optionsTitleText = null;
-    [SerializeField] 
+    [SerializeField]
     private TextMeshProUGUI volumeText = null;
-    [SerializeField] 
+    [SerializeField]
     private TextMeshProUGUI backText = null;
-    [SerializeField] 
+    [SerializeField]
     private TextMeshProUGUI languageText = null;
-    [SerializeField] 
+    [SerializeField]
     private TextMeshProUGUI languageButtonText = null;
-    [SerializeField] 
+    [SerializeField]
     private TextMeshProUGUI controlsText = null;
-    [SerializeField] 
+    [SerializeField]
     private TextMeshProUGUI controlsButtonText = null;
 
     void Start()
@@ -43,15 +43,16 @@ public class MainMenu : MonoBehaviour
     {
         if (PlayerPrefs.GetString(langKey, langDefault) == "German")
         {
-            changeMainMenuLanguageToGerman();
+            ChangeMainMenuLanguageToGerman();
+
         }
         else if (PlayerPrefs.GetString(langKey, langDefault) == "English")
         {
-            changeMainMenuLanguageToEnglish();
+            ChangeMainMenuLanguageToEnglish();
         }
     }
 
-    public void PlayGame() 
+    public void PlayGame()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -64,22 +65,22 @@ public class MainMenu : MonoBehaviour
     }
 
     //Switches the language on the press of the switch language button
-    public void switchLanguage()
+    public void SwitchLanguage()
     {
 
         if (PlayerPrefs.GetString(langKey, langDefault) == "English")
         {
             PlayerPrefs.SetString(langKey, "German");
-            changeMainMenuLanguageToGerman();
+            ChangeMainMenuLanguageToGerman();
         }
         else if (PlayerPrefs.GetString(langKey, langDefault) == "German")
         {
             PlayerPrefs.SetString(langKey, "English");
-            changeMainMenuLanguageToEnglish();
+            ChangeMainMenuLanguageToEnglish();
         }
     }
 
-    public void changeMainMenuLanguageToGerman()
+    public void ChangeMainMenuLanguageToGerman()
     {
         //setLanguage as preference
         optionsText.text = "Optionen";
@@ -90,10 +91,20 @@ public class MainMenu : MonoBehaviour
         languageText.text = "Sprache Wechseln";
         languageButtonText.text = "Englisch";
         controlsText.text = "Umgekehrte Maussteuerung";
-        controlsButtonText.text = "Sprühen/Angreifen";
+
+        //set button text according to the current mouse layout
+        if (PlayerPrefs.GetString(controlKey, "defaultControls") == "defaultControls")
+        {
+            controlsButtonText.text = "Angreifen/Sprühen";
+        }
+        else if (PlayerPrefs.GetString(controlKey, "defaultControls") == "altControls")
+        {
+            controlsButtonText.text = "Sprühen/Angreifen";
+        }
     }
 
-    public void changeMainMenuLanguageToEnglish()
+
+    public void ChangeMainMenuLanguageToEnglish()
     {
         //setLanguage as preference
         optionsText.text = "Options";
@@ -104,20 +115,44 @@ public class MainMenu : MonoBehaviour
         languageText.text = "Switch Language";
         languageButtonText.text = "German";
         controlsText.text = "Reverse Mouse Controls";
-        controlsButtonText.text = "Spray/Attack";
-    }
 
-    public void changeMouseControls()
-    {
+        //set button text according to the current mouse layout
         if (PlayerPrefs.GetString(controlKey, "defaultControls") == "defaultControls")
         {
-            PlayerPrefs.SetString(controlKey, "altControls");
+            controlsButtonText.text = "Attack/Spray";
         }
         else if (PlayerPrefs.GetString(controlKey, "defaultControls") == "altControls")
         {
-            PlayerPrefs.SetString(controlKey, "defaultControls");
+            controlsButtonText.text = "Spray/Attack";
         }
     }
 
+    public void ChangeMouseControls()
+    {
+        //if default controls are enabled, after a button click, switch to and show alternate chontrols
+        if (PlayerPrefs.GetString(controlKey, "defaultControls") == "defaultControls")
+        {
+            PlayerPrefs.SetString(controlKey, "altControls");
+            ControlSchemeText("Spray/Attack", "Sprühen/Angreifen");
+        }
+        //if alternate controls are enabled, after a button click, switch to and show default controls
+        else if (PlayerPrefs.GetString(controlKey, "defaultControls") == "altControls")
+        {
+            PlayerPrefs.SetString(controlKey, "defaultControls");
+            ControlSchemeText("Attack/Spray", "Angreifen/Sprühen");
+        }
+    }
+
+    public void ControlSchemeText(string engText, string gerText)
+    {
+        if (PlayerPrefs.GetString(langKey, langDefault) == "English")
+        {
+            controlsButtonText.text = engText;
+        } 
+        else if (PlayerPrefs.GetString(langKey, langDefault) == "German")
+        {
+            controlsButtonText.text = gerText;
+        }
+    }
 
 }
