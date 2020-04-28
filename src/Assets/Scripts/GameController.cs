@@ -14,10 +14,15 @@ public class GameController : MonoBehaviour
     private GameObject parent;
     private PlayerController playerController;
     private int beeCounter = 0;
+    private int livingBeeCounter = 0;
 
     //sets the interval of time in which the powerup spawns
     private float powerUpRandomSpanMin = 30;
     private float powerUpRandomSpanMax = 35;
+
+    //sets the interval of time in which the bees spawn
+    private float spawnBeeRandomSpanMin = 25;
+    private float spawnBeeRandomSpanMax = 40;
 
     public int playerScore = 0;
     public int beeScore = 0;
@@ -27,45 +32,62 @@ public class GameController : MonoBehaviour
 
     private readonly Vector3[] powerupSpawnPoints = new[] { new Vector3(-4, 1, -4), new Vector3(2, 1, -30),};
 
-    private bool powerUpRoutineActive = false;
-    private bool powerUpInstanceActive = false;
+    //sprivate bool powerUpRoutineActive = false;
+    //private bool powerUpInstanceActive = false;
+
+    private bool spawnBeeRoutineActive = false;
 
     private int _currentSpawnIndex = 0;
+
+    private readonly int maximumBeesActive = 15;
     
     void Start()
     {
         playerController = playerBody.GetComponentInParent<PlayerController>();
         parent = GameObject.FindWithTag("DynamicGameObjects");
         InstantiateBee();
-        //instantiatePowerUp(powerUpPrefab);
+        StartCoroutine(SpawnBeeRoutine());
+        StartCoroutine(SpawnPowerup());
+
     }
     void Update()
     {
+       
+        if (!spawnBeeRoutineActive)
+        {
+            spawnBeeRoutineActive = true;
+            StartCoroutine(SpawnBeeRoutine());
+        }
+
+        /*
         //checks if powerup routine is active and if a powerup object already exists, if it doesn't, then activate the routine to spawn a new one
         if (!powerUpRoutineActive && !powerUpInstanceActive)
         {
             powerUpRoutineActive = true;
             StartCoroutine(SpawnPowerup());
         }
-
+        */
     }
 
     private void InstantiateBee()
     {
+        if (livingBeeCounter >= maximumBeesActive) return;
         GameObject bee = Instantiate(beePrefab, _spawnPoints[_currentSpawnIndex++  % _spawnPoints.Length], Quaternion.identity, parent.transform);
         bee.GetComponent<BeeController>().target = playerBody.transform;
         bee.name = "Bee_" + beeCounter++;
+        livingBeeCounter++;
+       
     }
 
     private void InstantiatePowerUp(GameObject powerUp)
     {
-
         Instantiate(powerUp,powerupSpawnPoints[Random.Range(0, powerupSpawnPoints.Length)], Quaternion.Euler(0, 0, 0));
     }
 
     public void BeeScores()
     {
         beeScore += 1;
+        livingBeeCounter--;
         playerController.TakeDamage(1f);
 
         Debug.Log("Autsch");
@@ -76,20 +98,32 @@ public class GameController : MonoBehaviour
         }
        
         InstantiateBee();
+       
     }
 
     public void PlayerScores()
     {
         playerScore += 1;
-        InstantiateBee();
+        livingBeeCounter--;
+        if (livingBeeCounter <= 0) { InstantiateBee(); }
+        
     }
 
     public void CollectSpray()
     {
         playerController.CollectSpray();
-        powerUpInstanceActive = false;
+        StartCoroutine(SpawnPowerup()); // powerUpInstanceActive = false;
 
     }
+
+    IEnumerator SpawnBeeRoutine()
+    {
+        yield return new WaitForSeconds(Random.Range(spawnBeeRandomSpanMin, spawnBeeRandomSpanMax));
+
+        InstantiateBee();
+        spawnBeeRoutineActive = false;
+    }
+
 
     IEnumerator SpawnPowerup()
     {
@@ -98,8 +132,8 @@ public class GameController : MonoBehaviour
         //create a new spray powerup that can be collected by the user        
         InstantiatePowerUp(powerUpPrefab);
 
-        powerUpInstanceActive = true;
-        powerUpRoutineActive = false;
+        //powerUpInstanceActive = true;
+        //powerUpRoutineActive = false;
     }
 
     public void GameOver()
@@ -110,4 +144,5 @@ public class GameController : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
+
 }

@@ -16,6 +16,9 @@ public class BeeController : MonoBehaviour
     private float _distanceToTarget = Mathf.Infinity;
     private Boolean _isSuccessful;
     private Boolean isNumb;
+    private Boolean isDead=false;
+
+    private int health=2;
 
     private float numbTimeLeft;
     private float levelTime;
@@ -48,6 +51,8 @@ public class BeeController : MonoBehaviour
     
     void Update()
     {
+        if (isDead) { return; }
+
         if (isNumb)
         {
             UpdateNumbTimer();
@@ -141,16 +146,44 @@ public class BeeController : MonoBehaviour
         _navMeshAgent.enabled = false;
     }
     public void OnSwatterHit(GameObject swatter) {
+
         int force = 1000;
         _beeAnimator.SetTrigger(Damage);
         transform.LookAt(swatter.transform.position);
    
         var dir = -(swatter.transform.position - transform.position).normalized;
         rigidBody.AddForce(dir * force, ForceMode.Impulse);
-
         //rigidBody.AddForce(transform.forward * -1000, ForceMode.Impulse);
         //transform.position = Vector3.Lerp(transform.position, transform.forward * -200, Time.deltaTime*0.1f);
 
+        if (!_isSuccessful&&!isDead)
+        {
+            StartCoroutine(PlayAudioFeedbackDmg());
+            DealDamage();
+            
+        }
+    }
+
+    /* Gets called in OnSwatterHit if Bee not already dying or successful
+     * Decreases the bee's health points.
+     * If no health points are left, navMeshAgent, animator,
+     * and the gameController get informed, numb state gets lifted
+     * rigidbody constraits get lifted in order to fall on the floor
+    */
+    private void DealDamage()
+    {
+        health--;
+
+        if (health <= 0) {
+            _gameController.PlayerScores();
+            _beeAnimator.SetBool(Idle, false);
+            _beeAnimator.SetBool(Die, true);
+            _navMeshAgent.enabled = false;
+            rigidBody.useGravity = true;
+            rigidBody.drag = 0;
+            SetNumbState(false);
+            isDead = true;
+        }
     }
 
     private void GetAway()
@@ -159,4 +192,17 @@ public class BeeController : MonoBehaviour
         transform.position += Vector3.up * Time.deltaTime;
         Destroy(gameObject, 8.0f);
     }
+
+
+    IEnumerator PlayAudioFeedbackDmg()
+    {
+        _audioSource.pitch += 0.9f;
+        _audioSource.volume += 0.4f;
+        yield return new WaitForSeconds(0.3f);
+        
+        _audioSource.pitch -= 0.9f;
+        _audioSource.volume -= 0.4f;
+
+    }
+
 }
