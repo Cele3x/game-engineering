@@ -51,7 +51,6 @@ public class BeeController : MonoBehaviour
     
     void Update()
     {
-        if (isDead) { return; }
 
         if (isNumb)
         {
@@ -166,9 +165,10 @@ public class BeeController : MonoBehaviour
 
     /* Gets called in OnSwatterHit if Bee not already dying or successful
      * Decreases the bee's health points.
-     * If no health points are left, navMeshAgent, animator,
+     * If no health points are left, navMeshAgent, animator, audiosource
      * and the gameController get informed, numb state gets lifted
      * rigidbody constraits get lifted in order to fall on the floor
+     * components are destroyed
     */
     private void DealDamage()
     {
@@ -183,6 +183,9 @@ public class BeeController : MonoBehaviour
             rigidBody.drag = 0;
             SetNumbState(false);
             isDead = true;
+            Destroy(_audioSource);
+            Destroy(_navMeshAgent);
+            Destroy(this);
         }
     }
 
