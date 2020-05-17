@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetKeyUp(sprayKey))
         {
-            StopSpray(); TakeDamage(1f);
+            StopSpray();
         }
     }
 
