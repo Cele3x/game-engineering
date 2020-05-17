@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     private SprayLauncher sprayLauncher;
     private Animator animator;
+    private AudioSource swatterAudio;
     private KeyCode swatterKey;
     private KeyCode sprayKey;
 
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         sprayLauncher = spray.GetComponentInChildren<SprayLauncher>();
+        swatterAudio = swatter.GetComponent<AudioSource>();
         spray.SetActive(false);
     }
 
@@ -77,6 +79,7 @@ public class PlayerController : MonoBehaviour
             if (info.IsName("Hit"))
             {
                 Debug.Log("I punched a bee");
+                swatterAudio.Play();
                 BeeController beeCtrl = other.GetComponent<BeeController>();
                 beeCtrl.OnSwatterHit(swatter);
 
