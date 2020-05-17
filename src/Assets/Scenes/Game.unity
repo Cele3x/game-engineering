@@ -12029,6 +12029,7 @@ MonoBehaviour:
     type: 3}
   powerUpPrefab: {fileID: 2207432236522074800, guid: 2a3ac0ba22986c84d9fffebb6a6ced79,
     type: 3}
+  powerUpCollectSound: {fileID: 8300000, guid: 3ba301ea063f7914893f79e5964e93a1, type: 3}
   playerScore: 0
   beeScore: 0
 --- !u!4 &1836510598

@@ -10,9 +10,11 @@ public class GameController : MonoBehaviour
     public GameObject playerBody;
     public GameObject beePrefab;
     public GameObject powerUpPrefab;
+    public AudioClip powerUpCollectSound;
 
     private GameObject parent;
     private PlayerController playerController;
+    private AudioSource audioSource;
     private int beeCounter = 0;
     private int livingBeeCounter = 0;
 
@@ -45,6 +47,7 @@ public class GameController : MonoBehaviour
     {
         playerController = playerBody.GetComponentInParent<PlayerController>();
         parent = GameObject.FindWithTag("DynamicGameObjects");
+        audioSource = GetComponent<AudioSource>();
         InstantiateBee();
         StartCoroutine(SpawnBeeRoutine());
         StartCoroutine(SpawnPowerup());
@@ -112,6 +115,7 @@ public class GameController : MonoBehaviour
     public void CollectSpray()
     {
         playerController.CollectSpray();
+        audioSource.PlayOneShot(powerUpCollectSound, 1);
         StartCoroutine(SpawnPowerup()); // powerUpInstanceActive = false;
 
     }

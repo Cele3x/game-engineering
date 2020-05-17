@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class PowerupBehaviour : MonoBehaviour
 {
- 
-    private AudioSource audioSource;
-    
-
     private GameController gameController;
     private bool triggered = false;
 
@@ -26,8 +22,7 @@ public class PowerupBehaviour : MonoBehaviour
             if (other.gameObject.CompareTag("Player"))
             {
                 triggered = true;
-                //audioSource.Play(0);
-               
+
                 gameController.CollectSpray();
                 Destroy(gameObject);
             }
