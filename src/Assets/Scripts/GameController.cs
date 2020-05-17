@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     private GameObject parent;
     private PlayerController playerController;
     private AudioSource audioSource;
+
     private int beeCounter = 0;
     private int livingBeeCounter = 0;
 
@@ -51,7 +52,6 @@ public class GameController : MonoBehaviour
         InstantiateBee();
         StartCoroutine(SpawnBeeRoutine());
         StartCoroutine(SpawnPowerup());
-
     }
     void Update()
     {

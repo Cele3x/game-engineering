@@ -1792,6 +1792,10 @@ PrefabInstance:
       propertyPath: sprayBar
       value: 
       objectReference: {fileID: 240998188}
+    - target: {fileID: 1735347257, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: damageFeedback
+      value: 
+      objectReference: {fileID: 2800000, guid: cd42d1aecae62234a8683dc7efdb44d7, type: 3}
     - target: {fileID: 81983115402974096, guid: 5e9e851c0e142814dac026a256ba2ac0,
         type: 3}
       propertyPath: m_Enabled
@@ -11252,6 +11256,19 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 205039024}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1735347259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735347250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef9dd7e4e479c3419089dcb02f46694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageFeedback: {fileID: 2800000, guid: cd42d1aecae62234a8683dc7efdb44d7, type: 3}
 --- !u!4 &1736991690 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 458416, guid: 58176fbf71be51f45ab216fdd7d45a7a,
@@ -12071,7 +12088,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 8.924102
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0

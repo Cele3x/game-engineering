@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private SprayLauncher sprayLauncher;
     private Animator animator;
     private AudioSource swatterAudio;
+    private DamageEffect dmgEffect;
     private KeyCode swatterKey;
     private KeyCode sprayKey;
 
@@ -46,28 +47,28 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         sprayLauncher = spray.GetComponentInChildren<SprayLauncher>();
         swatterAudio = swatter.GetComponent<AudioSource>();
+        dmgEffect = GetComponent<DamageEffect>();
+        dmgEffect.enabled = false;
         spray.SetActive(false);
+        SetControlScheme();
     }
 
     // Update is called once per frame
     void Update()
-    {
-        SetControlScheme();
-
+    {       
         if (Input.GetKeyDown(swatterKey))
         {
             Hit();
         } 
         if (Input.GetKey(sprayKey))
         {
-            Spray();
+            Spray(); 
         }
         else if (Input.GetKeyUp(sprayKey))
         {
-            StopSpray();
+            StopSpray(); TakeDamage(1f);
         }
     }
-
 
     public void OnSwatterGridTrigger(Collider other) {
         
@@ -102,6 +103,8 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        dmgEffect.enabled = true;
+        dmgEffect.Flash();
         CalcHealth();
     }
 
