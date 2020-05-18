@@ -286,7 +286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3f8e6597b6ef64488542437a895773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverMenuUI: {fileID: 1066676079}
   timer: {fileID: 802209463}
   displayTimerText: {fileID: 1048954654}
   ingameTimerText: {fileID: 1855847579}
@@ -12136,7 +12135,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.3
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
