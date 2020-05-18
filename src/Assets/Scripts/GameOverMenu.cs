@@ -8,7 +8,6 @@ using TMPro;
 public class GameOverMenu : MonoBehaviour
 {
 
-    public GameObject gameOverMenuUI;
     public Timer timer;
 
     [SerializeField] 
@@ -39,10 +38,7 @@ public class GameOverMenu : MonoBehaviour
 
     public void ReturnToTitle()
     {
-        Time.timeScale = 1f;
-        AudioListener.pause = false;
         SceneManager.LoadScene(0);
-        gameOverMenuUI.SetActive(false);
     }
 
     public void setLanguage(string lang)

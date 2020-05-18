@@ -36,6 +36,8 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         Cursor.visible = true;
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
         slider.value = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
     }
 
@@ -90,7 +92,7 @@ public class MainMenu : MonoBehaviour
         backText.text = "Zurück";
         languageText.text = "Sprache Wechseln";
         languageButtonText.text = "Englisch";
-        controlsText.text = "Umgekehrte Maussteuerung";
+        controlsText.text = "Maussteuerung Umkehren";
 
         //set button text according to the current mouse layout
         if (PlayerPrefs.GetString(controlKey, "defaultControls") == "defaultControls")
