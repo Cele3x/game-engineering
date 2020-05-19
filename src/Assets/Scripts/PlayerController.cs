@@ -39,6 +39,10 @@ public class PlayerController : MonoBehaviour
     private static readonly int Spray1 = Animator.StringToHash("spray");
     private static readonly string HitStateName = "Hit";
     private static readonly int Hit1 = Animator.StringToHash("hit");
+    
+    public float totalDistance;
+    private Vector3 lastPosition;
+    private Vector3 currentPosition;
 
 
     // Start is called before the first frame update
@@ -51,11 +55,19 @@ public class PlayerController : MonoBehaviour
         dmgEffect.enabled = false;
         spray.SetActive(false);
         SetControlScheme();
+        
+        totalDistance = 0;
+        lastPosition = currentPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
-    {       
+    {
+        // measure player walked distance
+        currentPosition = transform.position;
+        totalDistance += Vector3.Distance(currentPosition, lastPosition);
+        lastPosition = currentPosition;
+        
         if (Input.GetKeyDown(swatterKey))
         {
             Hit();
