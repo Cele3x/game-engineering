@@ -29,19 +29,15 @@ public class GameOverMenu : MonoBehaviour
     //Initiates the language that was saved in the options menu
     void Start()
     {
-        SetLanguage(PlayerPrefs.GetString("LanguageSetting"));
     }
 
     // The results of the current attempt are displayed and the game then checks if the current number of defeated wasps
     // or the amount of time that the player survived is better than the saved highscore
     void Update()
     {
-        displayResultsText.text = "Defeated " + ingameDefeatedWaspsText.text + " Wasps in " 
-            + ingameTimerText.text + " Seconds";
         waspCounter.SetNewWaspHighscore();
-        timer.SetNewHighscore();
-        highscoreText.text = "Defeated " + PlayerPrefs.GetFloat("WaspHighscore", 0).ToString() + " Wasps in " 
-            + PlayerPrefs.GetFloat("Highscore", 0).ToString("F") + " Seconds";
+        timer.SetNewHighscore(); 
+        SetLanguage(PlayerPrefs.GetString("LanguageSetting"));
     }
 
     //This is accessed by pressing the main menu button in the gamer over menu to return to the main menu (which is scene 0)
@@ -69,12 +65,20 @@ public class GameOverMenu : MonoBehaviour
             restartGameText.text = "Restart Game";
             resultTimeText.text = "Result:";
             toTitleText.text = "Main Menu";
+            displayResultsText.text = "Defeated " + ingameDefeatedWaspsText.text + " Wasps in "
+            + ingameTimerText.text + " Seconds";
+            highscoreText.text = "Defeated " + PlayerPrefs.GetFloat("WaspHighscore", 0).ToString() + " Wasps in "
+            + PlayerPrefs.GetFloat("Highscore", 0).ToString("F") + " Seconds";
         }
         else if (lang == "German")
         {
             restartGameText.text = "Neustart";
             resultTimeText.text = "Endergebnis:";
             toTitleText.text = "Hauptmenü";
+            displayResultsText.text = "Erledigte " + ingameDefeatedWaspsText.text + " Wespen in "
+            + ingameTimerText.text + " Sekunden";
+            highscoreText.text = "Erledigte " + PlayerPrefs.GetFloat("WaspHighscore", 0).ToString() + " Wespen in "
+            + PlayerPrefs.GetFloat("Highscore", 0).ToString("F") + " Sekunden";
         }
     }
 
