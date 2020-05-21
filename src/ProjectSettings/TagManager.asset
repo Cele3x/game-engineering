@@ -9,7 +9,8 @@ TagManager:
   - DynamicGameObjects
   - Timer
   - Unstingable
-  - DefeatedWasps
+  - SprayPowerUp
+  - HealthPowerUp
   layers:
   - Default
   - TransparentFX

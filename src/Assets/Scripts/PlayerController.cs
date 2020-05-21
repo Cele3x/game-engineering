@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float maxHealth;
     [SerializeField]
-    private float maxTotalHealth = 10;
+    private float maxTotalHealth;
 
     public GameObject swatter;
     public GameObject spray;
@@ -40,9 +40,9 @@ public class PlayerController : MonoBehaviour
     private static readonly string HitStateName = "Hit";
     private static readonly int Hit1 = Animator.StringToHash("hit");
     
-    public float totalDistance;
-    private Vector3 lastPosition;
-    private Vector3 currentPosition;
+    //public float totalDistance;
+    //private Vector3 lastPosition;
+    //private Vector3 currentPosition;
 
 
     // Start is called before the first frame update
@@ -56,18 +56,18 @@ public class PlayerController : MonoBehaviour
         spray.SetActive(false);
         SetControlScheme();
         
-        totalDistance = 0;
-        lastPosition = currentPosition = transform.position;
+        //totalDistance = 0;
+        //lastPosition = currentPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         // measure player walked distance
-        currentPosition = transform.position;
+        /*currentPosition = transform.position;
         totalDistance += Vector3.Distance(currentPosition, lastPosition);
         lastPosition = currentPosition;
-        
+        */
         if (Input.GetKeyDown(swatterKey))
         {
             Hit();
@@ -96,7 +96,6 @@ public class PlayerController : MonoBehaviour
                 BeeController beeCtrl = other.GetComponent<BeeController>();
                 beeCtrl.OnSwatterHit(swatter);
 
-
             }
         }
 
@@ -120,10 +119,15 @@ public class PlayerController : MonoBehaviour
         CalcHealth();
     }
 
+    public void Heal(float amt)
+    {
+        health += amt;
+        CalcHealth();
+    }
+
     private void CalcHealth()
     {
         health = Mathf.Clamp(health, 0, maxHealth);
-
         onHealthChangedCallback?.Invoke();
     }
 

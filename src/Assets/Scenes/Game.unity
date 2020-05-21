@@ -4082,6 +4082,14 @@ PrefabInstance:
       propertyPath: damageFeedback
       value: 
       objectReference: {fileID: 2800000, guid: cd42d1aecae62234a8683dc7efdb44d7, type: 3}
+    - target: {fileID: 1735347257, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: maxTotalHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735347257, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 81983115402974096, guid: 5e9e851c0e142814dac026a256ba2ac0,
         type: 3}
       propertyPath: m_Enabled
@@ -27251,11 +27259,15 @@ MonoBehaviour:
   playerBody: {fileID: 1735347250}
   beePrefab: {fileID: 3553768502263998242, guid: 8bb73a0fd587902409c17a0a9b3370a2,
     type: 3}
-  powerUpPrefab: {fileID: 2207432236522074800, guid: 2a3ac0ba22986c84d9fffebb6a6ced79,
+  powerUpSpray: {fileID: 2207432236522074800, guid: 2a3ac0ba22986c84d9fffebb6a6ced79,
+    type: 3}
+  powerUpHealth: {fileID: 8248273020624476790, guid: ad7126cbe1106a743b0c8ee5e594d1c4,
     type: 3}
   powerUpCollectSound: {fileID: 8300000, guid: 3ba301ea063f7914893f79e5964e93a1, type: 3}
-  playerScore: 0
-  beeScore: 0
+  powerUpRandomSpanMin: 25
+  powerUpRandomSpanMax: 35
+  spawnBeeRandomSpanMin: 25
+  spawnBeeRandomSpanMax: 40
 --- !u!4 &1836510598
 Transform:
   m_ObjectHideFlags: 0

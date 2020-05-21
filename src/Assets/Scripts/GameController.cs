@@ -10,7 +10,8 @@ public class GameController : MonoBehaviour
     public GameObject waspCounterController;
     public GameObject playerBody;
     public GameObject beePrefab;
-    public GameObject powerUpPrefab;
+    public GameObject powerUpSpray;
+    public GameObject powerUpHealth;
     public AudioClip powerUpCollectSound;
 
     private GameObject parent;
@@ -22,20 +23,23 @@ public class GameController : MonoBehaviour
     private int livingBeeCounter = 0;
 
     //sets the interval of time in which the powerup spawns
-    private float powerUpRandomSpanMin = 30;
-    private float powerUpRandomSpanMax = 35;
+    [SerializeField]
+    private float powerUpRandomSpanMin;
+    [SerializeField]
+    private float powerUpRandomSpanMax;
 
     //sets the interval of time in which the bees spawn
-    private float spawnBeeRandomSpanMin = 25;
-    private float spawnBeeRandomSpanMax = 40;
-
-    public int playerScore = 0;
-    public int beeScore = 0;
-    
+    [SerializeField]
+    private float spawnBeeRandomSpanMin;
+    [SerializeField]
+    private float spawnBeeRandomSpanMax;
+ 
     private readonly Vector3[] _spawnPoints = new [] { new Vector3(-10, 0, 0), new Vector3(-10, 0, -40), 
                                                        new Vector3(10, 0, -20), new Vector3(-30, 0, -20)};
 
-    private readonly Vector3[] powerupSpawnPoints = new[] { new Vector3(-4, 1, -4), new Vector3(2, 1, -30),};
+    private readonly Vector3[] spraySpawnPoints = new[] { new Vector3(-23, 0.5f, -11), new Vector3(2, 0.5f, -30), new Vector3(-3, 0.5f, -37),
+                                                       new Vector3(-31, 0.5f, -32), new Vector3(-39, 0.5f, -8), new Vector3(-44, 8.5f, -3)};
+    private readonly Vector3[] onionSpawnPoints = new[] { new Vector3(-20, 0.5f, -33), new Vector3(-16, 0.5f, 5), new Vector3(-19, 0, -17), new Vector3(-30, 8.8f, -33) };
 
     //sprivate bool powerUpRoutineActive = false;
     //private bool powerUpInstanceActive = false;
@@ -54,7 +58,8 @@ public class GameController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         InstantiateBee();
         StartCoroutine(SpawnBeeRoutine());
-        StartCoroutine(SpawnPowerup());
+        StartCoroutine(SpawnSpray());
+        StartCoroutine(SpawnHealth());
     }
     void Update()
     {
@@ -85,14 +90,20 @@ public class GameController : MonoBehaviour
        
     }
 
-    private void InstantiatePowerUp(GameObject powerUp)
+    private void InstantiateSprayPowerUp()
     {
-        Instantiate(powerUp,powerupSpawnPoints[Random.Range(0, powerupSpawnPoints.Length)], Quaternion.Euler(0, 0, 0));
+        Instantiate(powerUpSpray, spraySpawnPoints[Random.Range(0, spraySpawnPoints.Length)], Quaternion.Euler(0, 0, 0));
     }
+
+    private void InstantiateHealthPowerUp()
+    {
+        Instantiate(powerUpHealth, onionSpawnPoints[Random.Range(0, onionSpawnPoints.Length)], Quaternion.Euler(0, 0, 0));
+    }
+
 
     public void BeeScores()
     {
-        beeScore += 1;
+
         livingBeeCounter--;
         playerController.TakeDamage(1f);
 
@@ -120,8 +131,27 @@ public class GameController : MonoBehaviour
     {
         playerController.CollectSpray();
         audioSource.PlayOneShot(powerUpCollectSound, 1);
-        StartCoroutine(SpawnPowerup()); // powerUpInstanceActive = false;
+        StartCoroutine(SpawnSpray()); // powerUpInstanceActive = false;
 
+    }
+
+    public void CollectHealth()
+    {
+        playerController.Heal(1);
+        audioSource.PlayOneShot(powerUpCollectSound, 1);
+        StartCoroutine(SpawnHealth());
+
+    }
+
+    IEnumerator SpawnHealth()
+    {
+        yield return new WaitForSeconds(Random.Range(powerUpRandomSpanMin, powerUpRandomSpanMax));
+
+        //create a new spray powerup that can be collected by the user        
+        InstantiateHealthPowerUp();
+
+        //powerUpInstanceActive = true;
+        //powerUpRoutineActive = false;
     }
 
     IEnumerator SpawnBeeRoutine()
@@ -133,16 +163,18 @@ public class GameController : MonoBehaviour
     }
 
 
-    IEnumerator SpawnPowerup()
+    IEnumerator SpawnSpray()
     {
         yield return new WaitForSeconds(Random.Range(powerUpRandomSpanMin, powerUpRandomSpanMax));
 
         //create a new spray powerup that can be collected by the user        
-        InstantiatePowerUp(powerUpPrefab);
+        InstantiateSprayPowerUp();
 
         //powerUpInstanceActive = true;
         //powerUpRoutineActive = false;
     }
+
+
 
     public void GameOver()
     {

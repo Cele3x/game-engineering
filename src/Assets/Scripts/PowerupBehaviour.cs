@@ -9,6 +9,7 @@ public class PowerupBehaviour : MonoBehaviour
     private float speed = 0.5f;
     private float up = 1;
     private float down = 0.5F;
+    private float initialY;
 
 
     private Vector3 direction = Vector3.up;
@@ -16,6 +17,7 @@ public class PowerupBehaviour : MonoBehaviour
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        initialY = gameObject.transform.position.y;
     }
  
 
@@ -23,11 +25,11 @@ public class PowerupBehaviour : MonoBehaviour
     {
         gameObject.transform.Translate(direction * Time.smoothDeltaTime*speed);
 
-        if (gameObject.transform.position.y > up)
+        if (gameObject.transform.position.y > up+ initialY)
         {
             direction = Vector3.down;
         }
-        else if (gameObject.transform.position.y < down)
+        else if (gameObject.transform.position.y < down+ initialY)
         {
             direction = Vector3.up;
         }
@@ -41,12 +43,24 @@ public class PowerupBehaviour : MonoBehaviour
             if (other.gameObject.CompareTag("Player"))
             {
                 triggered = true;
-
-                gameController.CollectSpray();
+                ActivatePowerUp();
                 Destroy(gameObject);
             }
             
         }
+    }
+
+    private void ActivatePowerUp()
+    {
+        if(this.gameObject.CompareTag("SprayPowerUp"))
+        {
+            gameController.CollectSpray();
+        }
+        else if (this.gameObject.CompareTag("HealthPowerUp"))
+        {
+            gameController.CollectHealth();
+        }
+
     }
 
 }
