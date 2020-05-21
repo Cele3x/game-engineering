@@ -168,7 +168,7 @@ public class BeeController : MonoBehaviour
      * If no health points are left, navMeshAgent, animator, audiosource
      * and the gameController get informed, numb state gets lifted
      * rigidbody constraits get lifted in order to fall on the floor
-     * components are destroyed
+     * nonvisual components are destroyed
     */
     private void DealDamage()
     {
@@ -186,6 +186,7 @@ public class BeeController : MonoBehaviour
             isDead = true;
             Destroy(_audioSource);
             Destroy(_navMeshAgent);
+            Destroy(GetComponentInChildren<StingController>());
             Destroy(this);
         }
     }
