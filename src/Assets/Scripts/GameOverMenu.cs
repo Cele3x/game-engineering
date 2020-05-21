@@ -44,6 +44,8 @@ public class GameOverMenu : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(1);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f;
         AudioListener.pause = false;
     }
