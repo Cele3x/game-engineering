@@ -74,12 +74,12 @@ public class PauseMenu : MonoBehaviour
         if (lang == "English")
         {
             resumeText.text = "Resume";
-            toTitleText.text = "Title";
+            toTitleText.text = "Main Menu";
         } 
         else if (lang == "German")
         {
             resumeText.text = "Fortsetzen";
-            toTitleText.text = "Titel";
+            toTitleText.text = "Hauptmenü";
         }
     }
 

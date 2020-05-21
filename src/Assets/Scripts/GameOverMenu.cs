@@ -55,12 +55,12 @@ public class GameOverMenu : MonoBehaviour
         if (lang == "English")
         {
             resultTimeText.text = "Time";
-            toTitleText.text = "Title";
+            toTitleText.text = "Main Menu";
         }
         else if (lang == "German")
         {
             resultTimeText.text = "Zeit";
-            toTitleText.text = "Titel";
+            toTitleText.text = "Hauptmenü";
         }
     }
 
