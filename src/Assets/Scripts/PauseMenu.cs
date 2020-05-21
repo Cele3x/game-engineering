@@ -20,7 +20,7 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
-        setLanguage(PlayerPrefs.GetString("LanguageSetting"));
+        SetLanguage(PlayerPrefs.GetString("LanguageSetting"));
     }
 
     // Update is called once per frame
@@ -69,7 +69,7 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void setLanguage(string lang)
+    public void SetLanguage(string lang)
     {
         if (lang == "English")
         {

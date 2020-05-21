@@ -9,6 +9,7 @@ public class GameOverMenu : MonoBehaviour
 {
 
     public Timer timer;
+    public WaspCounter waspCounter;
 
     [SerializeField] 
     private TextMeshProUGUI displayTimerText = null;
@@ -16,6 +17,8 @@ public class GameOverMenu : MonoBehaviour
     private TextMeshProUGUI ingameTimerText = null;
     [SerializeField] 
     private TextMeshProUGUI resultTimeText = null;
+    [SerializeField]
+    private TextMeshProUGUI restartGameText = null;
     [SerializeField] 
     private TextMeshProUGUI toTitleText = null;
     [SerializeField]
@@ -25,14 +28,15 @@ public class GameOverMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        SetLanguage(PlayerPrefs.GetString("LanguageSetting"));
     }
 
     // Update is called once per frame
     void Update()
     {
         displayTimerText.text = ingameTimerText.text;
-        timer.setNewHighscore();
+        //waspCounter.SetNewWaspHighscore();
+        timer.SetNewHighscore();
         highscoreTimerText.text = PlayerPrefs.GetFloat("Highscore", 0).ToString("F");
     }
 
@@ -50,15 +54,17 @@ public class GameOverMenu : MonoBehaviour
         AudioListener.pause = false;
     }
 
-    public void setLanguage(string lang)
+    public void SetLanguage(string lang)
     {
         if (lang == "English")
         {
+            restartGameText.text = "Restart Game";
             resultTimeText.text = "Time";
             toTitleText.text = "Main Menu";
         }
         else if (lang == "German")
         {
+            restartGameText.text = "Neustart";
             resultTimeText.text = "Zeit";
             toTitleText.text = "Hauptmenü";
         }

@@ -19,7 +19,7 @@ public class Timer : MonoBehaviour
             uiText.text = timer.ToString("F");
     }
 
-    public void setNewHighscore()
+    public void SetNewHighscore()
     {
         if (PlayerPrefs.GetFloat("Highscore", 0) < timer)
         {

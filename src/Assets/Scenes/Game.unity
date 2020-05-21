@@ -288,9 +288,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 802209463}
+  waspCounter: {fileID: 1875499589}
   displayTimerText: {fileID: 1048954654}
   ingameTimerText: {fileID: 1855847579}
   resultTimeText: {fileID: 1581642904}
+  restartGameText: {fileID: 1915704310}
   toTitleText: {fileID: 16057429}
   highscoreTimerText: {fileID: 642748583}
 --- !u!4 &6290543 stripped
@@ -427,7 +429,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Main Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e7214298fb7cf24d8463f71b0eccecc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: -7102990143417946274, guid: 2e7214298fb7cf24d8463f71b0eccecc,
     type: 2}
   m_fontSharedMaterials: []
@@ -506,7 +508,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -14079,6 +14081,7 @@ RectTransform:
   m_Children:
   - {fileID: 1448245391}
   - {fileID: 853812256}
+  - {fileID: 1875499588}
   m_Father: {fileID: 4986061}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20410,6 +20413,55 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8c19a618a0bd9844583b91dca0875a34, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c790654032b636346b57fc885244fd9c, type: 3}
+--- !u!1 &1875499587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1875499588}
+  - component: {fileID: 1875499589}
+  m_Layer: 5
+  m_Name: Defeated_Wasps_Counter_Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1875499588
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875499587}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1276102702}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1875499589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875499587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1cbfbd4959d1674cbf0d35acc2e6d22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waspCounterText: {fileID: 853812257}
 --- !u!1001 &1876223027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20825,7 +20877,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Reset Game
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e7214298fb7cf24d8463f71b0eccecc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: -7102990143417946274, guid: 2e7214298fb7cf24d8463f71b0eccecc,
     type: 2}
   m_fontSharedMaterials: []
@@ -20904,7 +20956,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
