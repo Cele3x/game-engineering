@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
 {
 
     public GameObject gameOverUI;
+    public GameObject waspCounterController;
     public GameObject playerBody;
     public GameObject beePrefab;
     public GameObject powerUpPrefab;
@@ -14,6 +15,7 @@ public class GameController : MonoBehaviour
 
     private GameObject parent;
     private PlayerController playerController;
+    private WaspCounter _waspCounter;
     private AudioSource audioSource;
 
     private int beeCounter = 0;
@@ -47,6 +49,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         playerController = playerBody.GetComponentInParent<PlayerController>();
+        _waspCounter = waspCounterController.GetComponent<WaspCounter>();
         parent = GameObject.FindWithTag("DynamicGameObjects");
         audioSource = GetComponent<AudioSource>();
         InstantiateBee();
@@ -106,7 +109,8 @@ public class GameController : MonoBehaviour
 
     public void PlayerScores()
     {
-        playerScore += 1;
+        //playerScore += 1;
+        _waspCounter.IncreaseWaspCounter();
         livingBeeCounter--;
         if (livingBeeCounter <= 0) { InstantiateBee(); }
         

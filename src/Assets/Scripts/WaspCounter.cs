@@ -14,7 +14,7 @@ public class WaspCounter : MonoBehaviour
     private int defeatedWasps;
 
     //Show the amount of wasps the player has currently defeated on the UI
-    void Update()
+    void Start()
     {
         waspCounterText.text = defeatedWasps.ToString();
     }
@@ -28,10 +28,11 @@ public class WaspCounter : MonoBehaviour
         }
     }
 
-    //Increase the count of defeated wasps from another script (after a bee has been defeated)
+    //Increase and display the count of defeated wasps from another script (after a bee has been defeated)
     public void IncreaseWaspCounter()
     {
         defeatedWasps++;
+        waspCounterText.text = defeatedWasps.ToString();
     }
 
 }
