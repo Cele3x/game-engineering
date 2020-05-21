@@ -581,7 +581,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 570893749}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &570893751
 Camera:
   m_ObjectHideFlags: 0
@@ -1008,7 +1008,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1967276021}
-        m_MethodName: backButton
+        m_MethodName: BackToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1825,7 +1825,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1967276019}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f1afaedf5832ae4c8b7069a645b1908, type: 3}
+  m_Script: {fileID: 11500000, guid: 1dd4f4290c9968b4ea66951a1a8410c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1995217767
@@ -1978,7 +1978,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1967276021}
-        m_MethodName: startGameButton
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

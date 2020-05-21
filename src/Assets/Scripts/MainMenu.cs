@@ -71,6 +71,11 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void ShowInstructions()
+    {
+        SceneManager.LoadScene("Instructions", LoadSceneMode.Additive);
+    }
+
     //Switches the language on the press of the switch language button in the options menu to the other language 
     //and set that language as the new preference
     public void SwitchLanguage()
