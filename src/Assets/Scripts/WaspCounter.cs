@@ -16,7 +16,7 @@ public class WaspCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        waspCounterText.text = defeatedWasps.ToString("F");
+        waspCounterText.text = defeatedWasps.ToString();
     }
 
     public void SetNewWaspHighscore()

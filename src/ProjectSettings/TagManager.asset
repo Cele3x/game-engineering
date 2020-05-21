@@ -9,6 +9,7 @@ TagManager:
   - DynamicGameObjects
   - Timer
   - Unstingable
+  - DefeatedWasps
   layers:
   - Default
   - TransparentFX

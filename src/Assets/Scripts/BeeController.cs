@@ -8,6 +8,8 @@ public class BeeController : MonoBehaviour
 {
     public Transform target;
 
+    private WaspCounter _waspCounter;
+
     private GameController _gameController;
     private NavMeshAgent _navMeshAgent;
     private Animator _beeAnimator;
@@ -38,6 +40,7 @@ public class BeeController : MonoBehaviour
 
     void Start()
     {
+        _waspCounter = GameObject.FindWithTag("DefeatedWasps").GetComponent<WaspCounter>();
         _gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         _beeAnimator = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -186,6 +189,7 @@ public class BeeController : MonoBehaviour
             Destroy(_audioSource);
             Destroy(_navMeshAgent);
             Destroy(this);
+            _waspCounter.IncreaseWaspCounter();
         }
     }
 
