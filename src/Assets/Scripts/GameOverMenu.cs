@@ -41,6 +41,13 @@ public class GameOverMenu : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(1);
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
+    }
+
     public void setLanguage(string lang)
     {
         if (lang == "English")
