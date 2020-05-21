@@ -18,12 +18,14 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] 
     private TextMeshProUGUI toTitleText = null;
 
+
+    //Initiates the language that was saved in the options menu
     void Start()
     {
         SetLanguage(PlayerPrefs.GetString("LanguageSetting"));
     }
 
-    // Update is called once per frame
+    // Check during the game if the player presses the Escape Key and open the menu or close it depending on if the pause menu is open or not
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) 
@@ -38,6 +40,8 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    //Resume the game after pausing, which means reactivating the HUD, the time, the audio and the player,
+    //while displaying the pause menu and cursor
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
@@ -51,6 +55,8 @@ public class PauseMenu : MonoBehaviour
 
     }
 
+    //Pause the game while playing, which means deactivating the HUD, the cursor, the player and pausing the time as well as the audio, 
+    //while disabling the pause menu and cursor
     void Pause()
     {
         pauseMenuUI.SetActive(true);
@@ -63,12 +69,14 @@ public class PauseMenu : MonoBehaviour
         GameObject.FindWithTag("Player").GetComponent<PlayerController>().enabled = false;
     }
 
+    //Loads the title screen/main menu (which is scene 0) after pressing a button in the pause menu 
     public void LoadTitleScreen()
     {
         GameIsPaused = false;
         SceneManager.LoadScene(0);
     }
 
+    //This sets the current language for the pause menu depending on the setting in the options menu
     public void SetLanguage(string lang)
     {
         if (lang == "English")

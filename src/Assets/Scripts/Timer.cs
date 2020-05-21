@@ -12,13 +12,14 @@ public class Timer : MonoBehaviour
 
     private float timer;
 
-    // Update is called once per frame
+    // Initialize the timer and show the passed time on the UI
     void Update()
     {
             timer += Time.deltaTime;
             uiText.text = timer.ToString("F");
     }
 
+    //This sets a new highscore when accessed from another script if the player survived longer than before
     public void SetNewHighscore()
     {
         if (PlayerPrefs.GetFloat("Highscore", 0) < timer)

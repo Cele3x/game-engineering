@@ -12,7 +12,9 @@ public class GameOverMenu : MonoBehaviour
     public WaspCounter waspCounter;
 
     [SerializeField] 
-    private TextMeshProUGUI displayTimerText = null;
+    private TextMeshProUGUI displayResultsText = null;
+    [SerializeField]
+    private TextMeshProUGUI ingameDefeatedWaspsText = null;
     [SerializeField] 
     private TextMeshProUGUI ingameTimerText = null;
     [SerializeField] 
@@ -22,29 +24,34 @@ public class GameOverMenu : MonoBehaviour
     [SerializeField] 
     private TextMeshProUGUI toTitleText = null;
     [SerializeField]
-    private TextMeshProUGUI highscoreTimerText = null;
+    private TextMeshProUGUI highscoreText = null;
 
-
-    // Start is called before the first frame update
+    //Initiates the language that was saved in the options menu
     void Start()
     {
         SetLanguage(PlayerPrefs.GetString("LanguageSetting"));
     }
 
-    // Update is called once per frame
+    // The results of the current attempt are displayed and the game then checks if the current number of defeated wasps
+    // or the amount of time that the player survived is better than the saved highscore
     void Update()
     {
-        displayTimerText.text = ingameTimerText.text;
-        //waspCounter.SetNewWaspHighscore();
+        displayResultsText.text = "Defeated " + ingameDefeatedWaspsText.text + " Wasps in " 
+            + ingameTimerText.text + " Seconds";
+        waspCounter.SetNewWaspHighscore();
         timer.SetNewHighscore();
-        highscoreTimerText.text = PlayerPrefs.GetFloat("Highscore", 0).ToString("F");
+        highscoreText.text = "Defeated " + PlayerPrefs.GetFloat("WaspHighscore", 0).ToString() + " Wasps in " 
+            + PlayerPrefs.GetFloat("Highscore", 0).ToString("F") + " Seconds";
     }
 
+    //This is accessed by pressing the main menu button in the gamer over menu to return to the main menu (which is scene 0)
     public void ReturnToTitle()
     {
         SceneManager.LoadScene(0);
     }
 
+    //This is accessed by pressing the restart button in the game over menu to restart the game
+    //To restart the game, the cursor has to be hidden and time as well as the audio start again
     public void RestartGame()
     {
         SceneManager.LoadScene(1);
@@ -54,18 +61,19 @@ public class GameOverMenu : MonoBehaviour
         AudioListener.pause = false;
     }
 
+    //This sets the current language for the game over menu depending on the setting in the options menu
     public void SetLanguage(string lang)
     {
         if (lang == "English")
         {
             restartGameText.text = "Restart Game";
-            resultTimeText.text = "Time";
+            resultTimeText.text = "Result:";
             toTitleText.text = "Main Menu";
         }
         else if (lang == "German")
         {
             restartGameText.text = "Neustart";
-            resultTimeText.text = "Zeit";
+            resultTimeText.text = "Endergebnis:";
             toTitleText.text = "Hauptmenü";
         }
     }

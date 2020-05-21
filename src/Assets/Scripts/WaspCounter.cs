@@ -13,12 +13,13 @@ public class WaspCounter : MonoBehaviour
 
     private int defeatedWasps;
 
-    // Update is called once per frame
+    //Show the amount of wasps the player has currently defeated on the UI
     void Update()
     {
         waspCounterText.text = defeatedWasps.ToString();
     }
 
+    //This sets a new highscore when accessed from another script if the player defeats more wasps than before
     public void SetNewWaspHighscore()
     {
         if (PlayerPrefs.GetFloat("WaspHighscore", 0) < defeatedWasps)
@@ -27,6 +28,7 @@ public class WaspCounter : MonoBehaviour
         }
     }
 
+    //Increase the count of defeated wasps from another script (after a bee has been defeated)
     public void IncreaseWaspCounter()
     {
         defeatedWasps++;
