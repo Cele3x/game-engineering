@@ -19,6 +19,8 @@ public class BeeController : MonoBehaviour
     private Boolean isDead=false;
 
     private int health=2;
+    private CsvLogger _logger;
+    public int beeId;
 
     private float numbTimeLeft;
     private float levelTime;
@@ -39,6 +41,7 @@ public class BeeController : MonoBehaviour
     void Start()
     {
         _gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+        _logger = GameObject.FindWithTag("GameController").GetComponent<CsvLogger>();
         _beeAnimator = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _audioSource = GetComponent<AudioSource>();
@@ -47,6 +50,8 @@ public class BeeController : MonoBehaviour
         initialWingSpeed = _beeAnimator.speed;
         initialNavSpeed = _navMeshAgent.speed;
         initialAudioPitch = _audioSource.pitch;
+        
+        _logger.Message("bee spawned", beeId);
     }
     
     void Update()
@@ -64,6 +69,7 @@ public class BeeController : MonoBehaviour
         {
             _distanceToTarget = Vector3.Distance(target.position, transform.position);
 
+            // TODO: Maybe check if targeting player as well
             if (_distanceToTarget >= _navMeshAgent.stoppingDistance)
             {
                 ChaseTarget();
@@ -121,6 +127,7 @@ public class BeeController : MonoBehaviour
     {
         if (becomeNumb)
         {
+            _logger.Message("bee numbed");
             levelTime = Time.timeSinceLevelLoad + numbDuration;
             isNumb = true;
             _beeAnimator.speed = numbWingSpeed;
@@ -140,6 +147,7 @@ public class BeeController : MonoBehaviour
     public void CollisionFromChild(Collider other)
     {
         if (_isSuccessful) return;
+        _logger.Message("bee stung player", beeId);
         _isSuccessful = true;
         _gameController.BeeScores();
         _navMeshAgent.enabled = false;
@@ -159,7 +167,6 @@ public class BeeController : MonoBehaviour
         {
             StartCoroutine(PlayAudioFeedbackDmg());
             DealDamage();
-            
         }
     }
 
@@ -188,6 +195,11 @@ public class BeeController : MonoBehaviour
             Destroy(_navMeshAgent);
             Destroy(GetComponentInChildren<StingController>());
             Destroy(this);
+            _logger.Message("bee died", beeId);
+        }
+        else
+        {
+            _logger.Message("bee got damaged", beeId);
         }
     }
 
@@ -195,9 +207,8 @@ public class BeeController : MonoBehaviour
     {
         _audioSource.Stop();
         transform.position += Vector3.up * Time.deltaTime;
-        Destroy(gameObject, 8.0f);
+        Destroy(gameObject, 3.0f);
     }
-
 
     IEnumerator PlayAudioFeedbackDmg()
     {

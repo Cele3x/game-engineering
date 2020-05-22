@@ -65,20 +65,16 @@ public class GameOverMenu : MonoBehaviour
             restartGameText.text = "Restart Game";
             resultTimeText.text = "Result:";
             toTitleText.text = "Main Menu";
-            displayResultsText.text = "Defeated " + ingameDefeatedWaspsText.text + " Wasps in "
-            + ingameTimerText.text + " Seconds";
-            highscoreText.text = "Defeated " + PlayerPrefs.GetFloat("WaspHighscore", 0).ToString() + " Wasps in "
-            + PlayerPrefs.GetFloat("Highscore", 0).ToString("F") + " Seconds";
+            displayResultsText.text = "Defeated " + ingameDefeatedWaspsText.text + " Wasps";
+            highscoreText.text = "Defeated " + PlayerPrefs.GetFloat("WaspHighscore", 0).ToString() + " Wasps";
         }
         else if (lang == "German")
         {
             restartGameText.text = "Neustart";
             resultTimeText.text = "Endergebnis:";
             toTitleText.text = "Hauptmenü";
-            displayResultsText.text = "Erledigte " + ingameDefeatedWaspsText.text + " Wespen in "
-            + ingameTimerText.text + " Sekunden";
-            highscoreText.text = "Erledigte " + PlayerPrefs.GetFloat("WaspHighscore", 0).ToString() + " Wespen in "
-            + PlayerPrefs.GetFloat("Highscore", 0).ToString("F") + " Sekunden";
+            displayResultsText.text = "Erledigte " + ingameDefeatedWaspsText.text + " Wespen";
+            highscoreText.text = "Erledigte " + PlayerPrefs.GetFloat("WaspHighscore", 0).ToString() + " Wespen";
         }
     }
 
