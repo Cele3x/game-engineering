@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     private PlayerController playerController;
     private WaspCounter _waspCounter;
     private AudioSource audioSource;
+    private CsvLogger _logger;
 
     private int beeCounter = 0;
     private int livingBeeCounter = 0;
@@ -52,6 +53,7 @@ public class GameController : MonoBehaviour
     
     void Start()
     {
+        _logger = GetComponent<CsvLogger>();
         playerController = playerBody.GetComponentInParent<PlayerController>();
         _waspCounter = waspCounterController.GetComponent<WaspCounter>();
         parent = GameObject.FindWithTag("DynamicGameObjects");
@@ -83,11 +85,12 @@ public class GameController : MonoBehaviour
     private void InstantiateBee()
     {
         if (livingBeeCounter >= maximumBeesActive) return;
+        beeCounter++;
         GameObject bee = Instantiate(beePrefab, _spawnPoints[_currentSpawnIndex++  % _spawnPoints.Length], Quaternion.identity, parent.transform);
         bee.GetComponent<BeeController>().target = playerBody.transform;
-        bee.name = "Bee_" + beeCounter++;
+        bee.GetComponent<BeeController>().beeId = beeCounter;
+        bee.name = "Bee_" + beeCounter;
         livingBeeCounter++;
-       
     }
 
     private void InstantiateSprayPowerUp()
@@ -115,7 +118,6 @@ public class GameController : MonoBehaviour
         }
        
         InstantiateBee();
-       
     }
 
     public void PlayerScores()
@@ -183,6 +185,7 @@ public class GameController : MonoBehaviour
         AudioListener.pause = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        _logger.SaveToFile();
     }
 
 }
