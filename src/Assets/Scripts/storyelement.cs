@@ -5,8 +5,11 @@ using UnityEngine;
 public class storyelement : MonoBehaviour {
 
 
-    public Dialog dialog; 
-
+    public Dialog dialog;
+    private void Start()
+    {
+        FindObjectOfType<DialogManager>().StartDialog(dialog);
+    }
     public void TriggerDialog()
     {
         FindObjectOfType<DialogManager>().StartDialog(dialog);
