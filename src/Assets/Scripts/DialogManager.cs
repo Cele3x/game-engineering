@@ -13,6 +13,9 @@ public class DialogManager : MonoBehaviour {
     [SerializeField] private GameObject currentlyHighlighted;
     [SerializeField] private GameObject continueButton;
 
+    private string forward;
+    private string startOver;
+
     private string[] lines;
     private readonly string[] germanLines = new[] { "Willkommen zum Tutorial. Hier erfahren Sie, wie das Spiel funktioniert.", 
         "Dies ist eine Wespe. Hüten Sie sich vor ihr, sie ist aggressiv und will Sie stechen! Schlagen Sie besser mit Ihrer Klatsche zu, bevor sie Sie tötet!",
@@ -36,12 +39,15 @@ public class DialogManager : MonoBehaviour {
         if (lang == "German")
         {
             lines = germanLines;
-            continueButton.GetComponentInChildren<TMP_Text>().SetText("> Weiter");
+            forward = "> Weiter";
+            startOver = "Bitte Nochmal";
         } else
         {
             lines = englishLines;
+            forward = "> Next Tipp";
+            startOver = "Explain again";
         }
-
+        continueButton.GetComponentInChildren<TMP_Text>().SetText(forward);
         dialogField.SetText(lines[0]);
 
     }
@@ -55,7 +61,9 @@ public class DialogManager : MonoBehaviour {
         if (instructionStep == 5)
         {
             currentlyHighlighted.SetActive(false);
-            continueButton.SetActive(false);
+            //continueButton.SetActive(false);
+            continueButton.GetComponentInChildren<TMP_Text>().SetText(startOver);
+            instructionStep = 0;
         }
 
         if (instructionStep==4)
@@ -85,7 +93,8 @@ public class DialogManager : MonoBehaviour {
         {
             dialogField.SetText(lines[instructionStep]);
             currentlyHighlighted.GetComponent<Transform>().localPosition = new Vector3(-3824, 759, 0);
-
+            continueButton.GetComponentInChildren<TMP_Text>().SetText(forward);
+            currentlyHighlighted.SetActive(true);
 
         }
 
