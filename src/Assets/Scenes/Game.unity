@@ -27268,6 +27268,7 @@ MonoBehaviour:
   powerUpRandomSpanMax: 35
   spawnBeeRandomSpanMin: 25
   spawnBeeRandomSpanMax: 40
+  maximumBeesActive: 15
 --- !u!4 &1836510598
 Transform:
   m_ObjectHideFlags: 0

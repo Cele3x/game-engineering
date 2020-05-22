@@ -41,14 +41,14 @@ public class GameController : MonoBehaviour
                                                        new Vector3(-31, 0.5f, -32), new Vector3(-39, 0.5f, -8), new Vector3(-44, 8.5f, -3)};
     private readonly Vector3[] onionSpawnPoints = new[] { new Vector3(-20, 0.5f, -33), new Vector3(-16, 0.5f, 5), new Vector3(-19, 0, -17), new Vector3(-30, 8.8f, -33) };
 
-    //sprivate bool powerUpRoutineActive = false;
-    //private bool powerUpInstanceActive = false;
 
     private bool spawnBeeRoutineActive = false;
 
     private int _currentSpawnIndex = 0;
 
-    private readonly int maximumBeesActive = 15;
+    //sets the maximum of bees to be alive at the same time
+    [SerializeField]
+    private int maximumBeesActive;
     
     void Start()
     {
@@ -62,24 +62,19 @@ public class GameController : MonoBehaviour
         StartCoroutine(SpawnHealth());
     }
     void Update()
-    {
-       
+    {       
         if (!spawnBeeRoutineActive)
         {
             spawnBeeRoutineActive = true;
             StartCoroutine(SpawnBeeRoutine());
         }
 
-        /*
-        //checks if powerup routine is active and if a powerup object already exists, if it doesn't, then activate the routine to spawn a new one
-        if (!powerUpRoutineActive && !powerUpInstanceActive)
-        {
-            powerUpRoutineActive = true;
-            StartCoroutine(SpawnPowerup());
-        }
-        */
     }
 
+    /*
+     * If the number of living bees has reached the maximum nothing happens.
+     * Spawns a bee at the position defined by the _currentSpawnIndex otherwise.
+     */
     private void InstantiateBee()
     {
         if (livingBeeCounter >= maximumBeesActive) return;
@@ -89,18 +84,16 @@ public class GameController : MonoBehaviour
         livingBeeCounter++;
        
     }
-
-    private void InstantiateSprayPowerUp()
+    //creates a new powerup that can be collected by the user   
+    private void InstantiatePowerUp(GameObject powerUp, Vector3[] spawnPoints )
     {
-        Instantiate(powerUpSpray, spraySpawnPoints[Random.Range(0, spraySpawnPoints.Length)], Quaternion.Euler(0, 0, 0));
+        Instantiate(powerUp, spawnPoints[Random.Range(0, spawnPoints.Length)], Quaternion.Euler(0, 0, 0));
     }
 
-    private void InstantiateHealthPowerUp()
-    {
-        Instantiate(powerUpHealth, onionSpawnPoints[Random.Range(0, onionSpawnPoints.Length)], Quaternion.Euler(0, 0, 0));
-    }
-
-
+    /*
+     * Informs the PlayerController, that the Player is taking damage
+     * Checks the Players amount of health and calls game over when it's 0
+     */
     public void BeeScores()
     {
 
@@ -118,6 +111,10 @@ public class GameController : MonoBehaviour
        
     }
 
+    /*
+    * Informs the UI and the livingBeeCounter that the players has defeated a bee.
+    * Spawns a bee, when the bee defeated was the last one alive.
+    */
     public void PlayerScores()
     {
         //playerScore += 1;
@@ -127,14 +124,22 @@ public class GameController : MonoBehaviour
         
     }
 
+    /*
+    * Informs the PlayerController that a Spray PowerUp has been picked up.
+    * Plays the corresponding sound and restarts the SpawnSpray routine .
+    */
     public void CollectSpray()
     {
         playerController.CollectSpray();
         audioSource.PlayOneShot(powerUpCollectSound, 1);
-        StartCoroutine(SpawnSpray()); // powerUpInstanceActive = false;
+        StartCoroutine(SpawnSpray());
 
     }
 
+    /*
+   * Informs the PlayerController that a Health PowerUp has been picked up.
+   * Plays the corresponding sound and restarts the SpawnHealth routine .
+   */
     public void CollectHealth()
     {
         playerController.Heal(1);
@@ -146,12 +151,7 @@ public class GameController : MonoBehaviour
     IEnumerator SpawnHealth()
     {
         yield return new WaitForSeconds(Random.Range(powerUpRandomSpanMin, powerUpRandomSpanMax));
-
-        //create a new spray powerup that can be collected by the user        
-        InstantiateHealthPowerUp();
-
-        //powerUpInstanceActive = true;
-        //powerUpRoutineActive = false;
+        InstantiatePowerUp(powerUpHealth, onionSpawnPoints);
     }
 
     IEnumerator SpawnBeeRoutine()
@@ -165,17 +165,15 @@ public class GameController : MonoBehaviour
 
     IEnumerator SpawnSpray()
     {
-        yield return new WaitForSeconds(Random.Range(powerUpRandomSpanMin, powerUpRandomSpanMax));
-
-        //create a new spray powerup that can be collected by the user        
-        InstantiateSprayPowerUp();
-
-        //powerUpInstanceActive = true;
-        //powerUpRoutineActive = false;
+        yield return new WaitForSeconds(Random.Range(powerUpRandomSpanMin, powerUpRandomSpanMax));     
+        InstantiatePowerUp(powerUpSpray, spraySpawnPoints);
     }
 
-
-
+   /*
+    * Activates the Game Over Screen,
+    * pauses the game ( or at least all frame rate independent functions)
+    * and activates the mouse cursor
+    */
     public void GameOver()
     {
         gameOverUI.SetActive(true);
