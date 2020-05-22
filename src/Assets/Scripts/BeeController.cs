@@ -50,8 +50,6 @@ public class BeeController : MonoBehaviour
         initialWingSpeed = _beeAnimator.speed;
         initialNavSpeed = _navMeshAgent.speed;
         initialAudioPitch = _audioSource.pitch;
-        
-        _logger.Message("bee spawned", beeId);
     }
     
     void Update()

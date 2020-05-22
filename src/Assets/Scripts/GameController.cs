@@ -80,10 +80,11 @@ public class GameController : MonoBehaviour
     private void InstantiateBee()
     {
         if (livingBeeCounter >= maximumBeesActive) return;
-        beeCounter++;
+        beeCounter += 1;
         GameObject bee = Instantiate(beePrefab, _spawnPoints[_currentSpawnIndex++  % _spawnPoints.Length], Quaternion.identity, parent.transform);
         bee.GetComponent<BeeController>().target = playerBody.transform;
         bee.GetComponent<BeeController>().beeId = beeCounter;
+        _logger.Message("bee spawned", beeCounter);
         bee.name = "Bee_" + beeCounter;
         livingBeeCounter++;
     }

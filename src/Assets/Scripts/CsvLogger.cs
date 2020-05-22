@@ -14,7 +14,7 @@ public class CsvLogger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        path = "Logs/GameLog_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv";
+        path = "GameLog_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv";
         csvString = new StringBuilder();
         csvString.AppendLine($"time,message,beeId");
         csvString.AppendLine($"{DateTime.Now:s},logger initialized,0");
