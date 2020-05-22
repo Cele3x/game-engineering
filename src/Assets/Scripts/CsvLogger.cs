@@ -15,14 +15,19 @@ public class CsvLogger : MonoBehaviour
     void Start()
     {
         path = "GameLog_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv";
-        csvString = new StringBuilder();
-        csvString.AppendLine($"time,message,beeId");
-        csvString.AppendLine($"{DateTime.Now:s},logger initialized,0");
     }
 
     public void Message(string message, int beeId = 0)
     {
+        if(csvString == null) Initialize();
         csvString.AppendLine($"{DateTime.Now:s},{message},{beeId}");
+    }
+
+    private void Initialize()
+    {
+        csvString = new StringBuilder();
+        csvString.AppendLine($"time,message,beeId");
+        csvString.AppendLine($"{DateTime.Now:s},logger initialized,0");
     }
     
     public void SaveToFile()
