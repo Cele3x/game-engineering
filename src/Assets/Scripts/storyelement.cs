@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class storyelement : MonoBehaviour {
+public class StoryElement : MonoBehaviour {
 
 
     public Dialog dialog;
