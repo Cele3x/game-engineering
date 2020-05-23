@@ -136,7 +136,7 @@ public class GameController : MonoBehaviour
         playerController.CollectSpray();
         audioSource.PlayOneShot(powerUpCollectSound, 1);
         StartCoroutine(SpawnSpray());
-
+        _logger.Message("spray collected");
     }
 
     /*
@@ -148,13 +148,14 @@ public class GameController : MonoBehaviour
         playerController.Heal(1);
         audioSource.PlayOneShot(powerUpCollectSound, 1);
         StartCoroutine(SpawnHealth());
-
+        _logger.Message("onion collected");
     }
 
     IEnumerator SpawnHealth()
     {
         yield return new WaitForSeconds(Random.Range(powerUpRandomSpanMin, powerUpRandomSpanMax));
         InstantiatePowerUp(powerUpHealth, onionSpawnPoints);
+        _logger.Message("onion spawned");
     }
 
     IEnumerator SpawnBeeRoutine()
@@ -170,6 +171,7 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(Random.Range(powerUpRandomSpanMin, powerUpRandomSpanMax));     
         InstantiatePowerUp(powerUpSpray, spraySpawnPoints);
+        _logger.Message("spray spawned");
     }
 
    /*

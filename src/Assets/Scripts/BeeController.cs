@@ -125,7 +125,7 @@ public class BeeController : MonoBehaviour
     {
         if (becomeNumb)
         {
-            _logger.Message("bee numbed");
+            _logger.Message("bee numbed", beeId);
             levelTime = Time.timeSinceLevelLoad + numbDuration;
             isNumb = true;
             _beeAnimator.speed = numbWingSpeed;
