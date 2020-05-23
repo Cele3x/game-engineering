@@ -37,7 +37,7 @@ public class GameOverMenu : MonoBehaviour
     {
         waspCounter.SetNewWaspHighscore();
         timer.SetNewHighscore(); 
-        SetLanguage(PlayerPrefs.GetString("LanguageSetting"));
+        SetLanguage(PlayerPrefs.GetString("LanguageSetting", "English"));
     }
 
     //This is accessed by pressing the main menu button in the gamer over menu to return to the main menu (which is scene 0)
