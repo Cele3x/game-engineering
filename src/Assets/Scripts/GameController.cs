@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     public GameObject powerUpSpray;
     public GameObject powerUpHealth;
     public AudioClip powerUpCollectSound;
+    public AudioClip beeStingSound;
 
     private GameObject parent;
     private PlayerController playerController;
@@ -105,6 +106,7 @@ public class GameController : MonoBehaviour
         playerController.TakeDamage(1f);
 
         Debug.Log("Autsch");
+        audioSource.PlayOneShot(beeStingSound, 5);
 
         if (playerController.Health <= 0)
         {

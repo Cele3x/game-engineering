@@ -27733,6 +27733,7 @@ MonoBehaviour:
   powerUpHealth: {fileID: 8248273020624476790, guid: ad7126cbe1106a743b0c8ee5e594d1c4,
     type: 3}
   powerUpCollectSound: {fileID: 8300000, guid: 3ba301ea063f7914893f79e5964e93a1, type: 3}
+  beeStingSound: {fileID: 8300000, guid: 05472132709d2ba4593fba320be7d4f3, type: 3}
   powerUpRandomSpanMin: 25
   powerUpRandomSpanMax: 35
   spawnBeeRandomSpanMin: 25

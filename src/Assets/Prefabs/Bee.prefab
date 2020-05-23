@@ -84,6 +84,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  beeStingSound: {fileID: 8300000, guid: 05472132709d2ba4593fba320be7d4f3, type: 3}
+  beeId: 0
 --- !u!195 &3553970678527160207
 NavMeshAgent:
   m_ObjectHideFlags: 0
