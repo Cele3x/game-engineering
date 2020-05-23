@@ -34,12 +34,14 @@ public class MainMenu : MonoBehaviour
     private TextMeshProUGUI controlsButtonText = null;
 
     //Initiates the main menu with default or saved audio level and resets the time, audio and cursor
+    //Sets Language to default language english if player hasn't selected one yet.
     void Start()
     {
         Cursor.visible = true;
         Time.timeScale = 1f;
         AudioListener.pause = false;
         slider.value = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
+        if (PlayerPrefs.GetString(langKey) == "") { PlayerPrefs.SetString(langKey, langDefault); };
     }
 
     //Check which language is currently set in the options menu and change to that language, the default language is english
@@ -48,7 +50,6 @@ public class MainMenu : MonoBehaviour
         if (PlayerPrefs.GetString(langKey, langDefault) == "German")
         {
             ChangeMainMenuLanguageToGerman();
-
         }
         else if (PlayerPrefs.GetString(langKey, langDefault) == "English")
         {
