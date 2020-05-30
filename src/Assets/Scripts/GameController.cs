@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     public GameObject powerUpHealth;
     public AudioClip powerUpCollectSound;
     public AudioClip beeStingSound;
+    public PauseMenu pauseMenu;
 
     private GameObject parent;
     private PlayerController playerController;
@@ -187,6 +188,7 @@ public class GameController : MonoBehaviour
         AudioListener.pause = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        pauseMenu.ChangeGameOverState();
         _logger.SaveToFile();
     }
 

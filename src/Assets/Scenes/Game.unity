@@ -356,10 +356,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waspCounter: {fileID: 1875499589}
+  pauseMenu: {fileID: 4986062}
   displayResultsText: {fileID: 1048954654}
   ingameDefeatedWaspsText: {fileID: 853812257}
-  ingameTimerText: {fileID: 0}
-  resultTimeText: {fileID: 1581642904}
+  resultText: {fileID: 1581642904}
   restartGameText: {fileID: 1915704310}
   toTitleText: {fileID: 16057429}
   highscoreText: {fileID: 642748583}
@@ -27575,6 +27575,7 @@ MonoBehaviour:
     type: 3}
   powerUpCollectSound: {fileID: 8300000, guid: 3ba301ea063f7914893f79e5964e93a1, type: 3}
   beeStingSound: {fileID: 8300000, guid: 05472132709d2ba4593fba320be7d4f3, type: 3}
+  pauseMenu: {fileID: 4986062}
   powerUpRandomSpanMin: 25
   powerUpRandomSpanMax: 35
   spawnBeeRandomSpanMin: 25
