@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
 {
 
     public static bool GameIsPaused = false;
+    public static bool GameIsOVer = false;
 
     public GameObject pauseMenuUI;
 
@@ -28,7 +29,7 @@ public class PauseMenu : MonoBehaviour
     // Check during the game if the player presses the Escape Key and open the menu or close it depending on if the pause menu is open or not
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) 
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameIsOVer) 
         {
            if(GameIsPaused) 
            {
@@ -88,6 +89,20 @@ public class PauseMenu : MonoBehaviour
         {
             resumeText.text = "Fortsetzen";
             toTitleText.text = "Hauptmenü";
+        }
+    }
+
+    //This function changes if the game is over or not over, to prevent the pause menu from activating on the game over screen
+    //If the game is over, this function helps to disable the pause menu, when it starts again this function helps to enable the pause menu
+    public void ChangeGameOverState()
+    {
+        if (GameIsOVer)
+        {
+            GameIsOVer = false;
+        }
+        else if (!GameIsOVer)
+        {
+            GameIsOVer = true;
         }
     }
 
