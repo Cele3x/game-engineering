@@ -1,0 +1,22 @@
+time,message,beeId
+2020-05-24T17:54:34,logger initialized,0
+2020-05-24T17:54:34,bee spawned,1
+2020-05-24T17:54:38,bee got damaged,1
+2020-05-24T17:54:38,bee spawned,2
+2020-05-24T17:54:38,bee died,1
+2020-05-24T17:54:51,bee got damaged,2
+2020-05-24T17:54:53,bee spawned,3
+2020-05-24T17:54:53,bee died,2
+2020-05-24T17:55:02,bee got damaged,3
+2020-05-24T17:55:02,bee spawned,4
+2020-05-24T17:55:02,spray spawned,0
+2020-05-24T17:55:05,bee died,3
+2020-05-24T17:55:08,onion spawned,0
+2020-05-24T17:55:09,bee spawned,5
+2020-05-24T17:55:18,bee stung player,4
+2020-05-24T17:55:18,bee spawned,6
+2020-05-24T17:55:18,bee got damaged,5
+2020-05-24T17:55:18,bee stung player,5
+2020-05-24T17:55:18,bee spawned,7
+2020-05-24T17:55:20,bee got damaged,7
+2020-05-24T17:55:23,bee stung player,6

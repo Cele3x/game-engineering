@@ -1,0 +1,34 @@
+time,message,beeId
+2020-05-23T11:41:03,logger initialized,0
+2020-05-23T11:41:03,bee spawned,1
+2020-05-23T11:41:06,bee got damaged,1
+2020-05-23T11:41:09,bee spawned,2
+2020-05-23T11:41:09,bee died,1
+2020-05-23T11:41:14,bee got damaged,2
+2020-05-23T11:41:16,bee spawned,3
+2020-05-23T11:41:16,bee died,2
+2020-05-23T11:41:22,bee stung player,3
+2020-05-23T11:41:22,bee spawned,4
+2020-05-23T11:41:26,bee got damaged,4
+2020-05-23T11:41:26,bee spawned,5
+2020-05-23T11:41:26,bee died,4
+2020-05-23T11:41:36,bee spawned,6
+2020-05-23T11:41:43,bee spawned,7
+2020-05-23T11:41:49,bee got damaged,5
+2020-05-23T11:41:49,bee died,5
+2020-05-23T11:41:52,bee got damaged,6
+2020-05-23T11:41:53,bee died,6
+2020-05-23T11:41:59,bee got damaged,7
+2020-05-23T11:42:01,bee spawned,8
+2020-05-23T11:42:01,bee died,7
+2020-05-23T11:42:09,bee got damaged,8
+2020-05-23T11:42:10,bee spawned,9
+2020-05-23T11:42:10,bee died,8
+2020-05-23T11:42:10,bee spawned,10
+2020-05-23T11:42:14,bee got damaged,9
+2020-05-23T11:42:16,bee died,9
+2020-05-23T11:42:19,bee spawned,11
+2020-05-23T11:42:20,bee stung player,10
+2020-05-23T11:42:20,bee spawned,12
+2020-05-23T11:42:20,bee got damaged,12
+2020-05-23T11:42:20,bee stung player,12

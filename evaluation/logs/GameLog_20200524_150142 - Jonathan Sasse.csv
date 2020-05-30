@@ -1,0 +1,70 @@
+time,message,beeId
+2020-05-24T15:01:42,logger initialized,0
+2020-05-24T15:01:42,bee spawned,1
+2020-05-24T15:01:48,bee got damaged,1
+2020-05-24T15:01:49,bee spawned,2
+2020-05-24T15:01:49,bee died,1
+2020-05-24T15:01:56,bee stung player,2
+2020-05-24T15:01:56,bee spawned,3
+2020-05-24T15:02:01,bee got damaged,3
+2020-05-24T15:02:04,bee spawned,4
+2020-05-24T15:02:04,bee died,3
+2020-05-24T15:02:12,bee got damaged,4
+2020-05-24T15:02:12,onion spawned,0
+2020-05-24T15:02:12,spray spawned,0
+2020-05-24T15:02:13,bee spawned,5
+2020-05-24T15:02:15,bee died,4
+2020-05-24T15:02:20,bee spawned,6
+2020-05-24T15:02:24,bee got damaged,5
+2020-05-24T15:02:25,bee got damaged,6
+2020-05-24T15:02:26,bee died,6
+2020-05-24T15:02:27,bee stung player,5
+2020-05-24T15:02:27,bee spawned,7
+2020-05-24T15:02:41,bee got damaged,7
+2020-05-24T15:02:44,bee spawned,8
+2020-05-24T15:02:44,bee died,7
+2020-05-24T15:02:47,bee spawned,9
+2020-05-24T15:02:48,bee got damaged,8
+2020-05-24T15:02:50,bee died,8
+2020-05-24T15:02:52,bee spawned,10
+2020-05-24T15:02:58,bee got damaged,9
+2020-05-24T15:03:00,bee died,9
+2020-05-24T15:03:01,bee got damaged,10
+2020-05-24T15:03:02,bee spawned,11
+2020-05-24T15:03:02,bee died,10
+2020-05-24T15:03:22,bee spawned,12
+2020-05-24T15:03:29,onion collected,0
+2020-05-24T15:03:30,bee spawned,13
+2020-05-24T15:03:31,bee stung player,11
+2020-05-24T15:03:31,bee spawned,14
+2020-05-24T15:03:34,bee got damaged,12
+2020-05-24T15:03:37,bee died,12
+2020-05-24T15:03:47,bee got damaged,13
+2020-05-24T15:03:47,bee died,13
+2020-05-24T15:03:49,bee got damaged,14
+2020-05-24T15:03:49,bee spawned,15
+2020-05-24T15:03:49,bee died,14
+2020-05-24T15:03:58,bee spawned,16
+2020-05-24T15:03:59,onion spawned,0
+2020-05-24T15:04:07,bee spawned,17
+2020-05-24T15:04:09,bee got damaged,16
+2020-05-24T15:04:09,bee died,16
+2020-05-24T15:04:11,bee got damaged,15
+2020-05-24T15:04:14,bee died,15
+2020-05-24T15:04:22,bee got damaged,17
+2020-05-24T15:04:24,bee spawned,18
+2020-05-24T15:04:24,bee died,17
+2020-05-24T15:04:37,bee spawned,19
+2020-05-24T15:04:38,bee spawned,20
+2020-05-24T15:04:43,bee got damaged,18
+2020-05-24T15:04:43,bee died,18
+2020-05-24T15:04:49,bee got damaged,20
+2020-05-24T15:04:51,bee died,20
+2020-05-24T15:05:01,bee got damaged,19
+2020-05-24T15:05:01,bee spawned,21
+2020-05-24T15:05:01,bee died,19
+2020-05-24T15:05:08,bee spawned,22
+2020-05-24T15:05:13,bee spawned,23
+2020-05-24T15:05:24,bee got damaged,21
+2020-05-24T15:05:24,bee died,21
+2020-05-24T15:05:30,bee stung player,22

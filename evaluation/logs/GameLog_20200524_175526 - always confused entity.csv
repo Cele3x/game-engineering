@@ -1,0 +1,57 @@
+time,message,beeId
+2020-05-24T17:55:26,logger initialized,0
+2020-05-24T17:55:26,bee spawned,1
+2020-05-24T17:55:30,bee stung player,1
+2020-05-24T17:55:30,bee spawned,2
+2020-05-24T17:55:40,bee got damaged,2
+2020-05-24T17:55:40,bee spawned,3
+2020-05-24T17:55:40,bee died,2
+2020-05-24T17:55:46,bee got damaged,3
+2020-05-24T17:55:48,bee spawned,4
+2020-05-24T17:55:48,bee died,3
+2020-05-24T17:55:53,spray spawned,0
+2020-05-24T17:55:55,onion spawned,0
+2020-05-24T17:55:58,bee spawned,5
+2020-05-24T17:56:01,bee spawned,6
+2020-05-24T17:56:04,bee got damaged,4
+2020-05-24T17:56:05,bee died,4
+2020-05-24T17:56:07,bee got damaged,6
+2020-05-24T17:56:08,bee got damaged,5
+2020-05-24T17:56:09,bee died,6
+2020-05-24T17:56:10,bee spawned,7
+2020-05-24T17:56:10,bee died,5
+2020-05-24T17:56:14,bee got damaged,7
+2020-05-24T17:56:16,bee spawned,8
+2020-05-24T17:56:16,bee died,7
+2020-05-24T17:56:24,bee got damaged,8
+2020-05-24T17:56:25,bee spawned,9
+2020-05-24T17:56:26,bee stung player,8
+2020-05-24T17:56:26,bee spawned,10
+2020-05-24T17:56:33,bee got damaged,9
+2020-05-24T17:56:33,bee died,9
+2020-05-24T17:56:35,bee got damaged,10
+2020-05-24T17:56:36,bee spawned,11
+2020-05-24T17:56:39,bee died,10
+2020-05-24T17:56:41,bee got damaged,11
+2020-05-24T17:56:43,bee spawned,12
+2020-05-24T17:56:43,bee died,11
+2020-05-24T17:56:56,bee got damaged,12
+2020-05-24T17:56:58,bee spawned,13
+2020-05-24T17:56:58,bee died,12
+2020-05-24T17:57:01,bee spawned,14
+2020-05-24T17:57:02,bee got damaged,13
+2020-05-24T17:57:04,bee spawned,15
+2020-05-24T17:57:05,bee died,13
+2020-05-24T17:57:08,bee got damaged,15
+2020-05-24T17:57:08,bee died,15
+2020-05-24T17:57:10,bee got damaged,14
+2020-05-24T17:57:14,bee spawned,16
+2020-05-24T17:57:14,bee died,14
+2020-05-24T17:57:30,bee got damaged,16
+2020-05-24T17:57:32,bee spawned,17
+2020-05-24T17:57:33,bee died,16
+2020-05-24T17:57:35,bee spawned,18
+2020-05-24T17:57:40,bee got damaged,17
+2020-05-24T17:57:42,bee died,17
+2020-05-24T17:57:42,bee got damaged,18
+2020-05-24T17:57:42,bee stung player,18

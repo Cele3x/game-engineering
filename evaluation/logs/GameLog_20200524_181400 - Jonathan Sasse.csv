@@ -1,0 +1,13 @@
+time,message,beeId
+2020-05-24T18:14:00,logger initialized,0
+2020-05-24T18:14:00,bee spawned,1
+2020-05-24T18:14:07,bee got damaged,1
+2020-05-24T18:14:09,bee stung player,1
+2020-05-24T18:14:09,bee spawned,2
+2020-05-24T18:14:16,bee got damaged,2
+2020-05-24T18:14:17,bee spawned,3
+2020-05-24T18:14:17,bee died,2
+2020-05-24T18:14:26,bee spawned,4
+2020-05-24T18:14:28,bee stung player,3
+2020-05-24T18:14:28,bee spawned,5
+2020-05-24T18:14:30,bee stung player,4

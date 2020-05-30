@@ -1,0 +1,45 @@
+time,message,beeId
+2020-05-30T12:07:44,logger initialized,0
+2020-05-30T12:07:44,bee spawned,1
+2020-05-30T12:07:50,bee got damaged,1
+2020-05-30T12:07:55,bee spawned,2
+2020-05-30T12:07:55,bee died,1
+2020-05-30T12:07:58,bee got damaged,2
+2020-05-30T12:07:59,bee spawned,3
+2020-05-30T12:07:59,bee died,2
+2020-05-30T12:08:03,bee got damaged,3
+2020-05-30T12:08:08,bee stung player,3
+2020-05-30T12:08:08,bee spawned,4
+2020-05-30T12:08:12,spray spawned,0
+2020-05-30T12:08:17,onion spawned,0
+2020-05-30T12:08:18,bee spawned,5
+2020-05-30T12:08:21,bee spawned,6
+2020-05-30T12:08:25,bee got damaged,5
+2020-05-30T12:08:25,bee got damaged,4
+2020-05-30T12:08:27,bee died,4
+2020-05-30T12:08:30,bee died,5
+2020-05-30T12:08:50,bee spawned,7
+2020-05-30T12:08:50,bee got damaged,6
+2020-05-30T12:08:54,bee died,6
+2020-05-30T12:08:57,bee spawned,8
+2020-05-30T12:09:02,bee got damaged,8
+2020-05-30T12:09:02,bee got damaged,7
+2020-05-30T12:09:05,bee died,7
+2020-05-30T12:09:15,bee stung player,8
+2020-05-30T12:09:15,bee spawned,9
+2020-05-30T12:09:27,bee spawned,10
+2020-05-30T12:09:32,onion collected,0
+2020-05-30T12:09:34,bee got damaged,9
+2020-05-30T12:09:34,bee died,9
+2020-05-30T12:09:35,bee spawned,11
+2020-05-30T12:09:47,spray collected,0
+2020-05-30T12:10:00,bee spawned,12
+2020-05-30T12:10:01,bee numbed,10
+2020-05-30T12:10:06,bee got damaged,10
+2020-05-30T12:10:07,onion spawned,0
+2020-05-30T12:10:07,bee spawned,13
+2020-05-30T12:10:09,bee died,10
+2020-05-30T12:10:15,bee stung player,11
+2020-05-30T12:10:15,bee spawned,14
+2020-05-30T12:10:18,bee got damaged,12
+2020-05-30T12:10:21,bee stung player,12
