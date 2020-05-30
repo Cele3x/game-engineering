@@ -781,9 +781,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd63ecdabeeef94681cb1e3a6b87f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialog:
-    name: 
-    sentences: []
 --- !u!1 &744394538
 GameObject:
   m_ObjectHideFlags: 0
@@ -1309,14 +1306,14 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 56.81
-  m_fontSizeBase: 56.81
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_textAlignment: 272
+  m_fontStyle: 1
+  m_textAlignment: 288
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
