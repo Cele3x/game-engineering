@@ -8,7 +8,6 @@ using TMPro;
 public class GameOverMenu : MonoBehaviour
 {
 
-    public Timer timer;
     public WaspCounter waspCounter;
 
     [SerializeField] 
@@ -36,7 +35,6 @@ public class GameOverMenu : MonoBehaviour
     void Update()
     {
         waspCounter.SetNewWaspHighscore();
-        timer.SetNewHighscore(); 
         SetLanguage(PlayerPrefs.GetString("LanguageSetting", "English"));
     }
 

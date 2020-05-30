@@ -38,7 +38,7 @@ public class DialogManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         
-        string lang = PlayerPrefs.GetString("LanguageSetting");
+        string lang = PlayerPrefs.GetString("LanguageSetting", "English");
 
         if (lang == "German")
         {
