@@ -39,10 +39,7 @@ public class PlayerController : MonoBehaviour
     private static readonly int Spray1 = Animator.StringToHash("spray");
     private static readonly string HitStateName = "Hit";
     private static readonly int Hit1 = Animator.StringToHash("hit");
-    
-    //public float totalDistance;
-    //private Vector3 lastPosition;
-    //private Vector3 currentPosition;
+
 
 
     // Start is called before the first frame update
@@ -55,19 +52,11 @@ public class PlayerController : MonoBehaviour
         dmgEffect.enabled = false;
         spray.SetActive(false);
         SetControlScheme();
-        
-        //totalDistance = 0;
-        //lastPosition = currentPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // measure player walked distance
-        /*currentPosition = transform.position;
-        totalDistance += Vector3.Distance(currentPosition, lastPosition);
-        lastPosition = currentPosition;
-        */
         if (Input.GetKeyDown(swatterKey))
         {
             Hit();
@@ -91,14 +80,12 @@ public class PlayerController : MonoBehaviour
 
             if (info.IsName("Hit"))
             {
-                Debug.Log("I punched a bee");
                 swatterAudio.Play();
                 BeeController beeCtrl = other.GetComponent<BeeController>();
                 beeCtrl.OnSwatterHit(swatter);
 
             }
         }
-
 
     }
 
@@ -135,13 +122,10 @@ public class PlayerController : MonoBehaviour
     {
         // play attack animation
         animator.SetTrigger(Hit1);
-        // detect enemies in range of attack
-        // damage them
     }
 
     void Spray()
     {
-        //animator.SetTrigger(Spray1);
         if (canSpray) 
         { 
             sprayLauncher.EmitSpray();
@@ -156,7 +140,6 @@ public class PlayerController : MonoBehaviour
             spray.SetActive(false);
             sprayBar.SetSprayBarVisibility(false);
         }
-
     }
 
     private void StopSpray()

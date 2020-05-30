@@ -20,7 +20,6 @@ public class SprayLauncher : MonoBehaviour
 
     public void EmitSpray()
     {
-        /*particleLauncher.Play();*/
         particleLauncher.Emit(5);
 
         nozle.transform.localPosition = Vector3.Lerp(nozlePosPressed, nozlePosSteady, Time.deltaTime);
@@ -33,28 +32,7 @@ public class SprayLauncher : MonoBehaviour
         nozle.transform.localPosition = Vector3.Lerp(nozlePosSteady, nozlePosPressed, Time.deltaTime);
         hole.transform.localPosition = Vector3.Lerp(nozlePosSteady, nozlePosPressed, Time.deltaTime);
         audioSource.Stop();
-
     }
 
 
-    // Update is called once per frame
-    /*void Update()
-    {
-        if (Input.GetButton("Fire1"))
-        { 
-            particleLauncher.Emit(5);
-
-            nozle.transform.localPosition = nozlePosPressed;
-            hole.transform.localPosition = nozlePosPressed;
-            if (!audioSource.isPlaying) { audioSource.Play(); }
-
-        }
-
-        if (Input.GetButtonUp("Fire1"))
-        {
-            nozle.transform.localPosition = nozlePosSteady;
-            hole.transform.localPosition = nozlePosSteady;
-            audioSource.Stop();
-        }
-    }*/
 }

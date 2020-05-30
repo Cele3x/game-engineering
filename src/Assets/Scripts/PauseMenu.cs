@@ -22,7 +22,7 @@ public class PauseMenu : MonoBehaviour
     //Initiates the language that was saved in the options menu
     void Start()
     {
-        SetLanguage(PlayerPrefs.GetString("LanguageSetting"));
+        SetLanguage(PlayerPrefs.GetString("LanguageSetting", "English"));
     }
 
     // Check during the game if the player presses the Escape Key and open the menu or close it depending on if the pause menu is open or not

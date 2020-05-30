@@ -41,7 +41,6 @@ public class MainMenu : MonoBehaviour
         Time.timeScale = 1f;
         AudioListener.pause = false;
         slider.value = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
-        if (PlayerPrefs.GetString(langKey) == "") { PlayerPrefs.SetString(langKey, langDefault); };
     }
 
     //Check which language is currently set in the options menu and change to that language, the default language is english

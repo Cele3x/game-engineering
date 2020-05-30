@@ -18,7 +18,7 @@ public class LifeBarController : MonoBehaviour
         playerController = player.GetComponent<PlayerController>();
 
         playerController.onHealthChangedCallback += UpdateLivesHUD;
-        setLanguage(PlayerPrefs.GetString("LanguageSetting"));
+        setLanguage(PlayerPrefs.GetString("LanguageSetting", "English"));
         UpdateLivesHUD();
     }
 

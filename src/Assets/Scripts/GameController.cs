@@ -105,7 +105,6 @@ public class GameController : MonoBehaviour
         livingBeeCounter--;
         playerController.TakeDamage(1f);
 
-        Debug.Log("Autsch");
         audioSource.PlayOneShot(beeStingSound, 5);
 
         if (playerController.Health <= 0)
