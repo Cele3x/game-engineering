@@ -1,7 +1,7 @@
 # Beware of the Angry Stingers - A 3D Action Game Set in an Exaggerated Commonplace Scenario
 ![Starting Scene](https://github.com/Cele3x/game-engineering/blob/master/status-reports/20200205/wasp_teaser.png)
 
-This repository was used for the development of the aaction game "Angry Stingers" carried out as part of the course "Game Engineering" in the winter semester 2019/2020 at the University of Regensburg. 
+This repository was used for the development of the action game "Angry Stingers" carried out as part of the course "Game Engineering" in the winter semester 2019/2020 at the University of Regensburg. 
 
 This folder contains the subfolders: 
 - [build](https://github.com/Cele3x/game-engineering/tree/master/submission/build)
