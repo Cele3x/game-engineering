@@ -7,6 +7,8 @@ This folder contains the subfolders:
 - [build](https://github.com/Cele3x/game-engineering/tree/master/submission/build)
 - [docs](https://github.com/Cele3x/game-engineering/tree/master/submission/docs)
 
+Each subfolder and contents will be described in the following, starting with Build:
+
 ## Build 
 This folder contains the built and executable game "Angry Stingers" that was developed for aforementioned course.
 
