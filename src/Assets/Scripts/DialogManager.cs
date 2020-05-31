@@ -9,31 +9,40 @@ public class DialogManager : MonoBehaviour {
  
     private int instructionStep = 0;
 
-    [SerializeField] private TMP_Text dialogField;
-    [SerializeField] private GameObject currentlyHighlighted;
-    [SerializeField] private GameObject continueButton;
+    [SerializeField] 
+    private TMP_Text dialogField = null;
+    [SerializeField] 
+    private GameObject currentlyHighlighted = null;
+    [SerializeField] 
+    private GameObject continueButton = null;
+    [SerializeField]
+    private TextMeshProUGUI instructionsText = null;
+    [SerializeField]
+    private TextMeshProUGUI mainMenuText = null;
+    [SerializeField]
+    private TextMeshProUGUI startGameText = null;
 
     private string forward;
     private string startOver;
 
     private string[] lines;
-    private readonly string[] germanLines = new[] { "Willkommen zum Tutorial. Hier erfahren Sie, wie das Spiel funktioniert.", 
-        "Starten wir bei der Steuerung:\n    [W]\n[A][S][D]     =  Laufen\nLinksklick    =  Angreifen\nRechtsklick  =  Power-up\n[ESC]         =  Pause\nDu kannst die Mausbelegung in den Optionen umkehren.",
-        "Dies ist eine Wespe. Hüten Sie sich vor ihr, sie ist aggressiv und will Sie stechen! Schlagen Sie besser mit Ihrer Klatsche zu, bevor sie Sie tötet!",
-         "Diese Anzeige zählt alle Wespen, die Sie im  aktuellen Durchgang eliminiert haben. Können Sie den Highscore toppen?",
-                 "Das hier zeigt Ihren aktuellen Gesundheitszustand an. Wenn Sie von einer Biene gestochen werden, verlieren Sie ein Leben. Wenn Sie keine Leben mehr haben, verlieren Sie das Spiel. So einfach ist das.",
-        "Wenn Sie Glück haben, finden Sie ein Spray wie dieses hier. Laufen Sie durch, um es aufzunehmen, und versprühen Sie mit der rechten Maustaste giftiges Insektenspray. Wespen hassen diesen Trick, es macht sie ganz langsam und träge.",
-        "Schon Oma wusste, dass Zwiebeln gegen Wespenstiche helfen. Sammeln Sie Zwiebeln und erhalten Sie ein Leben zurück. Wie bei den Sprühdosen muss man sie im ganzen Areal gut suchen.",
-         "Das war's fürs Erste, legen Sie gleich los, indem Sie auf den Start-Button unten rechts klicken, sobald Sie bereit sind."
+    private readonly string[] germanLines = new[] { "Willkommen zum Tutorial. Hier wird erklärt, wie das Spiel funktioniert.", 
+        "Starten wir bei der Steuerung:\n    [W]\n[A][S][D]     =  Laufen\nLinksklick    =  Angreifen\nRechtsklick  =  Power-up\n[ESC]         =  Pause\nDie Mausbelegung kann in den Optionen umgekehrt werden.",
+        "Dies ist eine Wespe. Vorsicht ist geboten, sie ist aggressiv und will den Spieler stechen! Schlagen Sie mit Ihrer Klatsche zu, bevor Sie gestochen werden!",
+        "Diese Anzeige zählt alle Wespen, die im aktuellen Durchgang eliminiert wurden. Können Sie den Highscore schlagen?",
+        "Dies ist die Lebensanzeige. Sie zeigt an, wie viele Leben aktuell übrig sind. Wird man von einer Wespe gestochen, wird ein Leben abgezogen. Wenn keine Leben mehr übrig sind, ist das Spiel vorbei. So einfach ist das.",
+        "Hin und wieder taucht im Spiel ein Spray wie dieses hier auf. Wenn man es einsammelt, kann man mit der rechten Maustaste einen giftigen Nebel versprühen. Wespen hassen Insektenspray, es macht sie ganz langsam und träge.",
+        "Schon Oma wusste, dass Zwiebeln gegen Wespenstiche helfen. Beim Aufsammeln von Zwiebeln erhält man ein Leben zurück. Genau wie die Sprühdosen müssen sie auf dem gesamten Grundstück erst einmal gesucht und gefunden werden .",
+        "Das war alles fürs Erste.  Sobald Sie bereit sind, können Sie mit einem Klick auf SPIEL STARTEN in die Welt von Angry Stingers eintauchen."
     };
-    private readonly string[] englishLines = new[] { "Welcome to the Instructions Section. Here you will learn how the game works. ",
-        "Let's start with the controls:\n    [W]\n[A][S][D]     =  Moving\nLeft click    =  Attack\nRight click  =  Power-up\n[ESC]         =  Pause\nYou can reverse mouse controls in the options menu.",
-        "This is a wasp. Beware of it, it is aggressive and wants to sting you! Better hit it with your swatter before it kills you!",
-        "This Display keeps count of all the wasps you have defeated during the current run. Can you beat the highscore?",
-        "This is your healthbar. It shows your current health. You lose one live if a bee stings you. If you dont have any lives left you loose the game. It's as simple as that.",
-    "Sometimes you'll be lucky and find an insect spray like this one here. Run through it to pick it up and use your right mouse button to emit toxic insect spray. Wasps hate that trick, it makes them so slow.",
-    "Grandma already knew that onions help fight wasp stings. Gather onions and gain extra health. Like the spray cans, you have to look for them carefully in the whole area",
-    "Thats all for now, dive right into it by clicking the start button in the bottom right, when you are ready!",};
+    private readonly string[] englishLines = new[] { "Welcome to the Instructions section. This section will explain how the game works. ",
+        "Let's start with the controls:\n    [W]\n[A][S][D]     =  Moving\nLeft click    =  Attack\nRight click  =  Power-up\n[ESC]         =  Pause\nThe mouse controls can be reversed in the options menu.",
+        "This is a wasp. Beware of it, it is aggressive and wants to sting the player! Better hit it with your swatter before you get stung!",
+        "This display counts all the wasps that were defeated during the current run. Can you beat the highscore?",
+        "This is the healthbar. It shows your current health. If a bee stings you, you lose one life. The game ends when no lives are left anymore. It's as simple as that.",
+        "Sometimes an insect spray like this one will appear. After picking it up, the right mouse button can be used to emit a toxic mist. Wasps hate insect spray, it makes them slow and sluggish.",
+        "Grandma already knew that onions help against wasp stings. Gathering an onion gains one extra live. Similar to the spray cans, you have to carefully search for them and find them on the premises",
+        "That is all for now. As soon as you are ready, you can start the game by clicking on START GAME and dive right into the world of Angry Stingers.",};
 
     // Use this for initialization
     void Start () {
@@ -43,13 +52,21 @@ public class DialogManager : MonoBehaviour {
         if (lang == "German")
         {
             lines = germanLines;
-            forward = "> Weiter";
+            forward = "> Nächster Tipp";
             startOver = "Bitte Nochmal";
+
+            instructionsText.text = "Anleitung";
+            mainMenuText.text = "Hauptmenü";
+            startGameText.text = "Spiel starten";
         } else
         {
             lines = englishLines;
-            forward = "> Next Tipp";
+            forward = "> Next Tip";
             startOver = "Explain again";
+
+            instructionsText.text = "Instructions";
+            mainMenuText.text = "Main menu";
+            startGameText.text = "Start game";
         }
         continueButton.GetComponentInChildren<TMP_Text>().SetText(forward);
         dialogField.SetText(lines[0]);
